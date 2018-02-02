@@ -12,6 +12,6 @@ DATABASES = {
         'NAME': 'restfulapi',
         'USER': 'restfulapi',
         'PASSWORD': 'restfulapi',
-        'HOST': 'restfulapi',
+        'HOST': 'localhost',
     }
 }
