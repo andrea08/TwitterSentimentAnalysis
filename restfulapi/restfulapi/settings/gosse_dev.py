@@ -9,9 +9,9 @@ DEBUG = True
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_name',
-        'USER': 'user_name',
-        'PASSWORD': 'password',
-        'HOST': 'db_host',
+        'NAME': 'restfulapi',
+        'USER': 'restfulapi',
+        'PASSWORD': 'restfulapi',
+        'HOST': 'localhost',
     }
 }
