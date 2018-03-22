@@ -35,7 +35,7 @@ class TweetSerializer(serializers.Serializer):
     """
     author = serializers.CharField()
     date_time = serializers.FloatField()
-    content = serializers.CharField
+    content = serializers.CharField()
 
     def create(self, validated_data):
         return Tweet(**validated_data)
@@ -52,7 +52,14 @@ class TweetListSerializer(serializers.Serializer):
     tweets = TweetSerializer(many=True)
 
     def create(self, validated_data):
-        return TweetList(**validated_data)
+        tweets_data = validated_data.pop("tweets")
+        tweet_list = TweetList(tweets=[], **validated_data)
+
+        for tweet_data in tweets_data:
+            tweet = Tweet(**tweet_data)
+            tweet_list.tweets.append(tweet)
+
+        return tweet_list
 
     def update(self, instance, validated_data):
         raise NotImplementedError("Updating existing objects is not supported")
@@ -65,7 +72,14 @@ class SentimentQuerySerializer(serializers.Serializer):
     tweets = TweetSerializer(many=True)
 
     def create(self, validated_data):
-        return SentimentQuery(**validated_data)
+        tweets_data = validated_data.pop("tweets")
+        query = SentimentQuery(tweets=[])
+
+        for tweet_data in tweets_data:
+            tweet = Tweet(**tweet_data)
+            query.tweets.append(tweet)
+
+        return query
 
     def update(self, instance, validated_data):
         raise NotImplementedError("Updating existing objects is not supported")
@@ -97,7 +111,10 @@ class SentimentDataSerializer(serializers.Serializer):
     score = ScoreSerializer(many=False)
 
     def create(self, validated_data):
-        return SentimentData(**validated_data)
+        score_data = validated_data.pop("score")
+        score = Score(**score_data)
+        sentiment = SentimentData(**validated_data, score=score)
+        return sentiment
 
     def update(self, instance, validated_data):
         raise NotImplementedError("Updating existing objects is not supported")
@@ -144,6 +161,11 @@ def run_examples():
     print(json_string)
 
     # Tweet list: deserialize
+    stream = BytesIO(json_string)
+    data = JSONParser().parse(stream)
+    serializer = TweetListSerializer(data=data)
+    if serializer.is_valid():
+        print(serializer.save())
 
 
 # Some examples/tests
