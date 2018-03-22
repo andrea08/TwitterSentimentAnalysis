@@ -14,7 +14,7 @@ from rest_framework.renderers import JSONRenderer
 
 from rest_framework import serializers
 from restfulapi.tweet_sentiment.data_structures import Score, TweetQuery, TweetList, Tweet, SentimentQuery, \
-    SentimentData
+    SentimentData, Error
 
 
 class TweetQuerySerializer(serializers.Serializer):
@@ -100,6 +100,19 @@ class SentimentDataSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         return SentimentData(**validated_data)
+
+    def update(self, instance, validated_data):
+        raise NotImplementedError("Updating existing objects is not supported")
+
+
+class ErrorSerializer(serializers.Serializer):
+    """
+    Class for (de)serializing an `Error` object
+    """
+    error_information = serializers.CharField()
+
+    def create(self, validated_data):
+        return Error(**validated_data)
 
     def update(self, instance, validated_data):
         raise NotImplementedError("Updating existing objects is not supported")

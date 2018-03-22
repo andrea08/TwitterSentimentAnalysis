@@ -90,3 +90,6 @@ class Error:
     """
     def __init__(self, error_information):
         self.error_information = error_information
+
+    def __repr__(self):
+        return f"Error({self.error_information})"
