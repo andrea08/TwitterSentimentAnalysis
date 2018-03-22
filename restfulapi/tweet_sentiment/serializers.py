@@ -6,14 +6,12 @@ import datetime
 from django.conf import settings
 from io import BytesIO
 
-settings.configure()  # needed to run the examples
+if __name__ == "__main__": settings.configure()  # needed to run the examples
 
 from rest_framework.parsers import JSONParser
 from rest_framework.renderers import JSONRenderer
-
-
 from rest_framework import serializers
-from restfulapi.tweet_sentiment.data_structures import Score, TweetQuery, TweetList, Tweet, SentimentQuery, \
+from tweet_sentiment.data_structures import Score, TweetQuery, TweetList, Tweet, SentimentQuery, \
     SentimentData, Error
 
 

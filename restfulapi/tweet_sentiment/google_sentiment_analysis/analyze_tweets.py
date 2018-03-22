@@ -3,7 +3,7 @@ from google.cloud.language import types
 from google.cloud.language import enums
 import datetime
 
-from restfulapi.tweet_sentiment.data_structures import Tweet, SentimentData, Score
+from tweet_sentiment.data_structures import SentimentData, Score, Tweet
 
 
 def analyze_tweets(tweets):
