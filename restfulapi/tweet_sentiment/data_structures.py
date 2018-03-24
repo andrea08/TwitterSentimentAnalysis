@@ -58,12 +58,13 @@ class SentimentData:
     """
     Contains information about a collection of analyzed tweets
     """
-    def __init__(self, number_found, score):
+    def __init__(self, number_found, skipped, score):
         self.number_found = number_found
+        self.skipped = skipped
         self.score = score
 
     def __repr__(self):
-        return f"SentimentData({self.number_found}, {repr(self.score)})"
+        return f"SentimentData({self.number_found}, {self.skipped}, {repr(self.score)})"
 
 
 class Score:
