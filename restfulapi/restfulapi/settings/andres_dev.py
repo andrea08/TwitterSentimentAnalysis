@@ -3,15 +3,15 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# Database
-# https://docs.djangoproject.com/en/1.11/ref/settings/#databases
+INSTALLED_APPS = [
+    "tweet_sentiment",
+    "rest_framework",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+]
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'db_name',
-        'USER': 'user_name',
-        'PASSWORD': 'password',
-        'HOST': 'db_host',
-    }
-}
+DATABASES = {}
