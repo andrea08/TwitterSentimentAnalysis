@@ -18,7 +18,7 @@
  * - CUSTOM STYLES
  */
 
- /**/
+ /*HOME*/
 #logo img {
     width: 20px;
     height: auto;
@@ -28,4 +28,17 @@
 #logo-group>span {
 	width: 100%;
 	font-size: 1.2em;
+	color: #f7f7f7;
+}
+
+/**SEARCH INPUT**/
+.smart-style-2 .header-search>input[type=text] {
+	border-radius: 5px;
+	background: white;
+	color: #2c3742;
+}
+
+.smart-style-2 .header-search>button{
+	top: 1px;
+	color: #2c3742;
 }
