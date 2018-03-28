@@ -1,14 +1,16 @@
-from google.cloud import language
-from google.cloud.language import types
-from google.cloud.language import enums
 import datetime
+
+from google.api_core.exceptions import InvalidArgument
+from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
 
 from tweet_sentiment.data_structures import SentimentData, Score, Tweet
 
 
 def analyze_tweets(tweets):
     client = language.LanguageServiceClient()
-    annotations = collect_annotations(client, tweets)
+    annotations, skipped = collect_annotations(client, tweets)
 
     counts = {
         "positive": 0,
@@ -25,7 +27,7 @@ def analyze_tweets(tweets):
         else:
             counts["positive"] += 1
 
-    return SentimentData(len(annotations), Score(
+    return SentimentData(len(annotations), skipped, Score(
         counts["positive"],
         counts["positive"] / len(annotations),
         counts["negative"],
@@ -37,13 +39,19 @@ def analyze_tweets(tweets):
 
 def collect_annotations(client, tweets):
     annotations = []
+    skipped = 0
     for tweet in tweets:
         document = types.Document(
             content=tweet.content,
             type=enums.Document.Type.PLAIN_TEXT
         )
-        annotations.append(client.analyze_sentiment(document=document))
-    return annotations
+        try:
+            annotations.append(client.analyze_sentiment(document=document))
+        except InvalidArgument:
+            skipped += 1
+            continue
+
+    return annotations, skipped
 
 
 def run_example():
