@@ -108,7 +108,7 @@ class SentimentDataSerializer(serializers.Serializer):
     Class for (de)serializing a `SentimentData` object
     """
     number_found = serializers.IntegerField()
-    number_skipped = serializers.IntegerField()
+    skipped = serializers.IntegerField()
     score = ScoreSerializer(many=False)
 
     def create(self, validated_data):

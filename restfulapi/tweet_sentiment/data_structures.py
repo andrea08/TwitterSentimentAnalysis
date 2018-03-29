@@ -12,7 +12,7 @@ class TweetQuery:
         self.content = content
 
     def __repr__(self):
-        return f"TweetQuery({self.type}, {self.content})"
+        return "TweetQuery({}, {})".format(self.type, self.content)
 
 
 class TweetList:
@@ -25,7 +25,7 @@ class TweetList:
 
     def __repr__(self):
         tweets = ",\n".join(repr(t) for t in self.tweets)
-        return f"TweetList({self.number_found}, {tweets})"
+        return "TweetList({}, {})".format(self.number_found, tweets)
 
 
 class Tweet:
@@ -38,8 +38,8 @@ class Tweet:
         self.content = content
 
     def __repr__(self):
-        return f"Tweet({self.author}, {str(self.date_time)}, " + \
-               f"{self.content[:30] + '...' if len(self.content) >= 30 else self.content})"
+        return "Tweet({}, {}, ".format(self.author, str(self.date_time)) + \
+               "{})".format(self.content[:30] + '...' if len(self.content) >= 30 else self.content)
 
 
 class SentimentQuery:
@@ -51,7 +51,7 @@ class SentimentQuery:
 
     def __repr__(self):
         tweets = ",\n".join(repr(t) for t in self.tweets)
-        return f"SentimentQuery({tweets})"
+        return "SentimentQuery({})".format(tweets)
 
 
 class SentimentData:
@@ -64,7 +64,7 @@ class SentimentData:
         self.score = score
 
     def __repr__(self):
-        return f"SentimentData({self.number_found}, {self.skipped}, {repr(self.score)})"
+        return "SentimentData({}, {}, {})".format(self.number_found, self.skipped, repr(self.score))
 
 
 class Score:
@@ -81,8 +81,8 @@ class Score:
         self.neutral_percentage = neutral_percentage
 
     def __repr__(self):
-        return f"Score({self.positive_number}, {self.positive_percentage}, {self.negative_number}, " + \
-               f"{self.negative_percentage}, {self.neutral_number}, {self.neutral_percentage})"
+        return "Score({}, {}, {}, ".format(self.positive_number, self.positive_percentage, self.negative_number) + \
+               "{}, {}, {})".format(self.negative_percentage, self.neutral_number, self.neutral_percentage)
 
 
 class Error:
@@ -93,4 +93,4 @@ class Error:
         self.error_information = error_information
 
     def __repr__(self):
-        return f"Error({self.error_information})"
+        return "Error({})".format(self.error_information)
