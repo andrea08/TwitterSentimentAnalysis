@@ -9,8 +9,8 @@
     	<div class="col-lg-4 col-lg-offset-4">
     		<!-- input: search field -->
     		<form name="search_form" class="header-search">
-		        <input id="search-fld" type="text" name="search_input" placeholder="Find tweets" ng-model='search' ng-change='change(search_form)'>
-		        <button type="submit" ng-disabled="search_form.$invalid || search_form.$pristine">
+		        <input id="search-fld" type="text" name="search_input" placeholder="Find tweets" ng-model='query' ng-change='change(search_form)'>
+		        <button type="submit" ng-disabled="search_form.$invalid || search_form.$pristine" ng-click="search()">
 		            <i class="fa fa-search"></i>
 		        </button>
 		    </form>
