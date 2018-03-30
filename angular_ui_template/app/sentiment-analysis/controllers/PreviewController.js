@@ -40,6 +40,11 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 		});
 	}
 
+	// Redirect to home
+	$scope.change_search = function(){
+		$state.go('app.home')
+	}
+
 	
 
 });
