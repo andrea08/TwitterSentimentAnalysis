@@ -3864,6 +3864,7 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 	$scope.total_tweets = null;
 	$scope.tweet_list = null;
 	$scope.error_message = null;
+	$scope.type_class = null;
 
 	// Redirect if there is no query value
 	if($scope.query == null){
@@ -3872,15 +3873,17 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 		// There is a query value
 		var tweet_query = {type: null, content: $scope.query};
 		if($scope.query[0] ==  '@'){
-			tweet_query.type = "nickname"
+			tweet_query.type = "nickname";
+			$scope.type_class = "nickname";
 		}else{
-			tweet_query.type = "hashtag"
+			tweet_query.type = "hashtag";
+			$scope.type_class = "hashtag";
 		}
 
 		RestFulAPI.get_tweets(tweet_query).then(function(tweet_list){
 			$scope.tweet_list = tweet_list.tweets;
 			$scope.tweets = true;
-			$scope.total_tweets = len(tweet_list.tweets);
+			$scope.total_tweets = tweet_list.tweets.length;
 
 
 		}, function(err){
@@ -3899,6 +3902,11 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 	// Redirect to home
 	$scope.change_search = function(){
 		$state.go('app.home')
+	}
+
+	// Redirect to results
+	$scope.analyse = function(){
+		$state.go('app.results');
 	}
 
 	
@@ -3939,6 +3947,27 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
     	"type": "hashtag",
     	"content": "#Dancing"
     };
+
+    var tweet_list = {
+    	"number_found": 3,
+    	"tweets": [
+    		{
+                "author": "gossminn",
+                "date_time": '1522351047.353921',
+                "content": "Hello world! I love organic cookies!"
+            },
+            {
+                "author": "gossminn",
+                "date_time": '1522351047.353921',
+                "content": "I hate studying!"
+            },
+            {
+                "author": "user_1",
+                "date_time": '1522351047.353921',
+                "content": "My first tweet :)!"
+            }
+    	]
+    }
 
     // End of data >>>>>>>>>>>>>>>>>>>>
 
@@ -3991,8 +4020,10 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
 	    			dfd.resolve(tweet_list);
 	    		}
 	    	}).error(function(err){
-	    			var error = {type: 1, message: JSON.stringify(err), data: err};
-	    			dfd.reject(error);
+	    			//Development purpose:
+	    			dfd.resolve(tweet_list);
+	    			/*var error = {type: 1, message: JSON.stringify(err), data: err};
+	    			dfd.reject(error);*/
 	    	});
 	    	return dfd.promise;
 	    }
@@ -6277,43 +6308,6 @@ angular.module('SmartAdmin.Layout').directive('stateBreadcrumbs', function ($roo
         }
     }
 });
-
-"use strict";
-
-angular.module('SmartAdmin.UI').directive('smartPopoverHtml', function () {
-    return {
-        restrict: "A",
-        link: function(scope, element, attributes){
-            var options = {};
-            options.content = attributes.smartPopoverHtml;
-            options.placement = attributes.popoverPlacement || 'top';
-            options.html = true;
-            options.trigger =  attributes.popoverTrigger || 'click';
-            options.title =  attributes.popoverTitle || attributes.title;
-            element.popover(options)
-
-        }
-
-    };
-});
-
-
-"use strict";
-
-angular.module('SmartAdmin.UI').directive('smartTooltipHtml', function () {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attributes){
-                element.tooltip({
-                    placement: attributes.tooltipPlacement || 'top',
-                    html: true,
-                    title: attributes.smartTooltipHtml
-                })
-            }
-        };
-    }
-);
-
 'use strict';
 
 angular.module('SmartAdmin.Layout').factory('SmartCss', function ($rootScope, $timeout) {
@@ -6459,6 +6453,43 @@ angular.module('SmartAdmin.Layout').factory('lazyScript', function($q, $http){
         }
     };
 });
+
+"use strict";
+
+angular.module('SmartAdmin.UI').directive('smartPopoverHtml', function () {
+    return {
+        restrict: "A",
+        link: function(scope, element, attributes){
+            var options = {};
+            options.content = attributes.smartPopoverHtml;
+            options.placement = attributes.popoverPlacement || 'top';
+            options.html = true;
+            options.trigger =  attributes.popoverTrigger || 'click';
+            options.title =  attributes.popoverTitle || attributes.title;
+            element.popover(options)
+
+        }
+
+    };
+});
+
+
+"use strict";
+
+angular.module('SmartAdmin.UI').directive('smartTooltipHtml', function () {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attributes){
+                element.tooltip({
+                    placement: attributes.tooltipPlacement || 'top',
+                    html: true,
+                    title: attributes.smartTooltipHtml
+                })
+            }
+        };
+    }
+);
+
 "use strict";
 
 angular.module('app.auth').directive('facebookSignin', function ($rootScope, ezfb) {

@@ -30,6 +30,27 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
     	"content": "#Dancing"
     };
 
+    var tweet_list = {
+    	"number_found": 3,
+    	"tweets": [
+    		{
+                "author": "gossminn",
+                "date_time": '1522351047.353921',
+                "content": "Hello world! I love organic cookies!"
+            },
+            {
+                "author": "gossminn",
+                "date_time": '1522351047.353921',
+                "content": "I hate studying!"
+            },
+            {
+                "author": "user_1",
+                "date_time": '1522351047.353921',
+                "content": "My first tweet :)!"
+            }
+    	]
+    }
+
     // End of data >>>>>>>>>>>>>>>>>>>>
 
 
@@ -81,8 +102,10 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
 	    			dfd.resolve(tweet_list);
 	    		}
 	    	}).error(function(err){
-	    			var error = {type: 1, message: JSON.stringify(err), data: err};
-	    			dfd.reject(error);
+	    			//Development purpose:
+	    			dfd.resolve(tweet_list);
+	    			/*var error = {type: 1, message: JSON.stringify(err), data: err};
+	    			dfd.reject(error);*/
 	    	});
 	    	return dfd.promise;
 	    }

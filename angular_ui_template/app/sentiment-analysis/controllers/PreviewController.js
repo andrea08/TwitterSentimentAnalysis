@@ -8,6 +8,7 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 	$scope.total_tweets = null;
 	$scope.tweet_list = null;
 	$scope.error_message = null;
+	$scope.type_class = null;
 
 	// Redirect if there is no query value
 	if($scope.query == null){
@@ -16,15 +17,17 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 		// There is a query value
 		var tweet_query = {type: null, content: $scope.query};
 		if($scope.query[0] ==  '@'){
-			tweet_query.type = "nickname"
+			tweet_query.type = "nickname";
+			$scope.type_class = "nickname";
 		}else{
-			tweet_query.type = "hashtag"
+			tweet_query.type = "hashtag";
+			$scope.type_class = "hashtag";
 		}
 
 		RestFulAPI.get_tweets(tweet_query).then(function(tweet_list){
 			$scope.tweet_list = tweet_list.tweets;
 			$scope.tweets = true;
-			$scope.total_tweets = len(tweet_list.tweets);
+			$scope.total_tweets = tweet_list.tweets.length;
 
 
 		}, function(err){
@@ -43,6 +46,11 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 	// Redirect to home
 	$scope.change_search = function(){
 		$state.go('app.home')
+	}
+
+	// Redirect to results
+	$scope.analyse = function(){
+		$state.go('app.results');
 	}
 
 	
