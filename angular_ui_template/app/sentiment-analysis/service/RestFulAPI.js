@@ -49,12 +49,25 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
                 "content": "My first tweet :)!"
             }
     	]
-    }
+    };
+
+    var sentiment_data = {
+    	"number_found":2,
+    	"skipped":0,
+    	"score":{
+    		"positive_number":1,
+    		"positive_percentage":0.5,
+    		"negative_number":0,
+    		"negative_percentage":0.0,
+    		"neutral_number":1,
+    		"neutral_percentage":0.5
+    	}
+    };
 
     // End of data >>>>>>>>>>>>>>>>>>>>
 
 
-	this.$get = function($q, $http){
+	this.$get = function($q, $http, $rootScope){
 		/**
 		* Request to retrieve the sentiment analysis of a set of tweets.
 		* sentiment_query = {tweets: [{author: "nickname", data_time:"time", content:"tweet"} , <tweet> ..]}
@@ -69,10 +82,14 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
 			var url = server + 'tweet_sentiment/sentiment';
 	    	var dfd = $q.defer();
 	    	$http.post(url, sentiment_query).success(function(sentiment_data){
+	    		// Broadcast result of request
+                $rootScope.$broadcast('$finishedRequest'); 
 				dfd.resolve(sentiment_data);
 			}).error(function(err){
 				var error = {type: 1, message: JSON.stringify(err), data: err};
 				console.error(JSON.stringify(err));
+				// Broadcast result of request
+                $rootScope.$broadcast('$finishedRequest'); 
 				dfd.reject(error);
 			});
 			return dfd.promise;
@@ -97,14 +114,22 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
 	    	$http.post(url, tweet_query).success(function(tweet_list){
 	    		if(tweet_list.tweets.length == 0 && tweet_list.number_found == 0){
 	    			var error = {type: 0, message: "Tweets no found", data: tweet_list};
+	    			// Broadcast result of request
+                	$rootScope.$broadcast('$finishedRequest'); 
 	    			dfd.reject(error);
 	    		}else{
+	    			// Broadcast result of request
+                	$rootScope.$broadcast('$finishedRequest'); 
 	    			dfd.resolve(tweet_list);
 	    		}
 	    	}).error(function(err){
 	    			//Development purpose:
+	    			// Broadcast result of request
+                	$rootScope.$broadcast('$finishedRequest'); 
 	    			dfd.resolve(tweet_list);
 	    			/*var error = {type: 1, message: JSON.stringify(err), data: err};
+	    			// Broadcast result of request
+                	$rootScope.$broadcast('$finishedRequest');
 	    			dfd.reject(error);*/
 	    	});
 	    	return dfd.promise;

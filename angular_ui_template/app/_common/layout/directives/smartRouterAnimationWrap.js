@@ -62,7 +62,9 @@ angular.module('SmartAdmin.Layout').directive('smartRouterAnimationWrap', functi
             });
 
             var destroyForEnd = $rootScope.$on('$viewContentLoaded', function (event) {
-                contentViewAnimEnd();
+                $rootScope.$on('$finishedRequest', function(event){
+                    contentViewAnimEnd();
+                });
             });
 
             element.on('$destroy', function(){

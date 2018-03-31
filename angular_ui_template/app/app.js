@@ -26,7 +26,7 @@ angular.module('app', [
     //'app.dashboard',
     //'app.calendar',
     //'app.inbox',
-    //'app.graphs',
+    'app.graphs',
     //'app.tables',
     //'app.forms',
     //'app.ui',
@@ -43,7 +43,7 @@ angular.module('app', [
 
 
     // Intercept http calls.
-    $provide.factory('ErrorHttpInterceptor', function ($q) {
+    $provide.factory('ErrorHttpInterceptor', function ($q, $rootScope) {
         var errorCounter = 0;
         function notifyError(rejection){
             console.log(rejection);
@@ -71,6 +71,7 @@ angular.module('app', [
             responseError: function (rejection) {
                 // show notification
                 notifyError(rejection);
+
                 // Return the promise rejection.
                 return $q.reject(rejection);
             }

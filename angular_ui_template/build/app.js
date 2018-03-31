@@ -316,7 +316,7 @@ angular.module('app', [
     //'app.dashboard',
     //'app.calendar',
     //'app.inbox',
-    //'app.graphs',
+    'app.graphs',
     //'app.tables',
     //'app.forms',
     //'app.ui',
@@ -333,7 +333,7 @@ angular.module('app', [
 
 
     // Intercept http calls.
-    $provide.factory('ErrorHttpInterceptor', function ($q) {
+    $provide.factory('ErrorHttpInterceptor', function ($q, $rootScope) {
         var errorCounter = 0;
         function notifyError(rejection){
             console.log(rejection);
@@ -361,6 +361,7 @@ angular.module('app', [
             responseError: function (rejection) {
                 // show notification
                 notifyError(rejection);
+
                 // Return the promise rejection.
                 return $q.reject(rejection);
             }
@@ -1425,6 +1426,10 @@ angular.module('app.sentimentAnalysis', ['ui.router'])
                     templateUrl: 'app/sentiment-analysis/views/results.html',
                     controller: 'ResultsController'
                 }
+            },
+            params: {
+                tweets: null,
+                query: null
             }
         })
 });
@@ -2078,7 +2083,7 @@ $templateCache.put("app/dashboard/todo/todo-widget.tpl.html","<div id=\"todo-wid
 $templateCache.put("app/layout/language/language-selector.tpl.html","<ul class=\"header-dropdown-list hidden-xs ng-cloak\" ng-controller=\"LanguagesCtrl\">\n    <li class=\"dropdown\" dropdown>\n        <a class=\"dropdown-toggle\"  data-toggle=\"dropdown\" href> <img src=\"styles/img/blank.gif\" class=\"flag flag-{{currentLanguage.key}}\" alt=\"{{currentLanguage.alt}}\"> <span> {{currentLanguage.title}} </span>\n            <i class=\"fa fa-angle-down\"></i> </a>\n        <ul class=\"dropdown-menu pull-right\">\n            <li ng-class=\"{active: language==currentLanguage}\" ng-repeat=\"language in languages\">\n                <a ng-click=\"selectLanguage(language)\" ><img src=\"styles/img/blank.gif\" class=\"flag flag-{{language.key}}\"\n                                                   alt=\"{{language.alt}}\"> {{language.title}}</a>\n            </li>\n        </ul>\n    </li>\n</ul>");
 $templateCache.put("app/layout/partials/footer.tpl.html","<div class=\"page-footer\">\n    <div class=\"row\">\n        <div class=\"col-xs-12 col-sm-6\">\n            <span class=\"txt-color-white\">Twitter Sentiment Analysis © 2018</span>\n        </div>\n    </div>\n</div>");
 $templateCache.put("app/layout/partials/header.tpl.html","<header id=\"header\">\n<div id=\"logo-group\">\n\n    <!-- PLACE YOUR LOGO HERE -->\n    <span id=\"logo\"> <img src=\"styles/img/logo_sentiment_small_white.png\" alt=\"SmartAdmin\"> \n        <span class=\"hidden-xs\">Twitter Sentiment Analysis</span>\n    </span>\n    <!-- END LOGO PLACEHOLDER -->\n</div>\n\n\n<!-- pulled right: nav area -->\n<div class=\"pull-right\">\n\n    <!-- collapse menu button -->\n    <div id=\"hide-menu\" class=\"btn-header pull-right\">\n        <span> <a toggle-menu title=\"Collapse Menu\"><i\n                class=\"fa fa-reorder\"></i></a> </span>\n    </div>\n    <!-- end collapse menu -->\n\n    <!-- fullscreen button -->\n    <div id=\"fullscreen\" class=\"btn-header transparent pull-right\">\n        <span> <a full-screen title=\"Full Screen\"><i\n                class=\"fa fa-arrows-alt\"></i></a> </span>\n    </div>\n    <!-- end fullscreen button -->\n\n</div>\n<!-- end pulled right: nav area -->\n\n</header>");
-$templateCache.put("app/layout/partials/navigation.tpl.html","<aside id=\"left-panel\">\n\n    <nav>\n        <!-- NOTE: Notice the gaps after each icon usage <i></i>..\n        Please note that these links work a bit different than\n        traditional href=\"\" links. See documentation for details.\n        -->\n\n        <ul data-smart-menu>\n\n            <li data-ui-sref-active=\"active\">\n                <a data-ui-sref=\"app.home\" title=\"Outlook\">\n                    <i class=\"fa fa-lg fa-fw fa-search\"></i> <span class=\"menu-item-parent\">{{getWord(\'Home\')}}</span></a>\n            </li>\n\n        </ul>\n\n        <!-- NOTE: This allows you to pull menu items from server -->\n        <!-- <ul data-smart-menu-items=\"/api/menu-items.json\"></ul> -->\n    </nav>\n\n  <span class=\"minifyme\" data-action=\"minifyMenu\" minify-menu>\n    <i class=\"fa fa-arrow-circle-left hit\"></i>\n  </span>\n\n</aside>");
+$templateCache.put("app/layout/partials/navigation.tpl.html","<aside id=\"left-panel\">\n\n    <nav>\n        <!-- NOTE: Notice the gaps after each icon usage <i></i>..\n        Please note that these links work a bit different than\n        traditional href=\"\" links. See documentation for details.\n        -->\n\n        <ul data-smart-menu>\n\n            <li data-ui-sref-active=\"active\">\n                <a data-ui-sref=\"app.home\" title=\"Home\">\n                    <i class=\"fa fa-lg fa-fw fa-search\"></i> <span class=\"menu-item-parent\">{{getWord(\'Home\')}}</span></a>\n            </li>\n\n        </ul>\n\n        <!-- NOTE: This allows you to pull menu items from server -->\n        <!-- <ul data-smart-menu-items=\"/api/menu-items.json\"></ul> -->\n    </nav>\n\n  <span class=\"minifyme\" data-action=\"minifyMenu\" minify-menu>\n    <i class=\"fa fa-arrow-circle-left hit\"></i>\n  </span>\n\n</aside>");
 $templateCache.put("app/layout/partials/sub-header.tpl.html","<div class=\"col-xs-12 col-sm-5 col-md-5 col-lg-8\" data-sparkline-container>\n    <ul id=\"sparks\" class=\"\">\n        <li class=\"sparks-info\">\n            <h5> My Income <span class=\"txt-color-blue\">$47,171</span></h5>\n            <div class=\"sparkline txt-color-blue hidden-mobile hidden-md hidden-sm\">\n                1300, 1877, 2500, 2577, 2000, 2100, 3000, 2700, 3631, 2471, 2700, 3631, 2471\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Traffic <span class=\"txt-color-purple\"><i class=\"fa fa-arrow-circle-up\"></i>&nbsp;45%</span></h5>\n            <div class=\"sparkline txt-color-purple hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n        <li class=\"sparks-info\">\n            <h5> Site Orders <span class=\"txt-color-greenDark\"><i class=\"fa fa-shopping-cart\"></i>&nbsp;2447</span></h5>\n            <div class=\"sparkline txt-color-greenDark hidden-mobile hidden-md hidden-sm\">\n                110,150,300,130,400,240,220,310,220,300, 270, 210\n            </div>\n        </li>\n    </ul>\n</div>\n			");
 $templateCache.put("app/layout/partials/voice-commands.tpl.html","<!-- TRIGGER BUTTON:\n<a href=\"/my-ajax-page.html\" data-toggle=\"modal\" data-target=\"#remoteModal\" class=\"btn btn-default\">Open Modal</a>  -->\n\n<!-- MODAL PLACE HOLDER\n<div class=\"modal fade\" id=\"remoteModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"remoteModalLabel\" aria-hidden=\"true\">\n<div class=\"modal-dialog\">\n<div class=\"modal-content\"></div>\n</div>\n</div>   -->\n<!--////////////////////////////////////-->\n\n<!--<div class=\"modal-header\">\n<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">\n&times;\n</button>\n<h4 class=\"modal-title\" id=\"myModalLabel\">Command List</h4>\n</div>-->\n<div class=\"modal-body\">\n\n	<h1><i class=\"fa fa-microphone text-muted\"></i>&nbsp;&nbsp; SmartAdmin Voice Command</h1>\n	<hr class=\"simple\">\n	<h5>Instruction</h5>\n\n	Click <span class=\"text-success\">\"Allow\"</span> to access your microphone and activate Voice Command.\n	You will notice a <span class=\"text-primary\"><strong>BLUE</strong> Flash</span> on the microphone icon indicating activation.\n	The icon will appear <span class=\"text-danger\"><strong>RED</strong></span> <span class=\"label label-danger\"><i class=\"fa fa-microphone fa-lg\"></i></span> if you <span class=\"text-danger\">\"Deny\"</span> access or don\'t have any microphone installed.\n	<br>\n	<br>\n	As a security precaution, your browser will disconnect the microphone every 60 to 120 seconds (sooner if not being used). In which case Voice Command will prompt you again to <span class=\"text-success\">\"Allow\"</span> or <span class=\"text-danger\">\"Deny\"</span> access to your microphone.\n	<br>\n	<br>\n	If you host your page over <strong>http<span class=\"text-success\">s</span></strong> (secure socket layer) protocol you can wave this security measure and have an unintrupted Voice Command.\n	<br>\n	<br>\n	<h5>Commands</h5>\n	<ul>\n		<li>\n			<strong>\'show\' </strong> then say the <strong>*page*</strong> you want to go to. For example <strong>\"show inbox\"</strong> or <strong>\"show calendar\"</strong>\n		</li>\n		<li>\n			<strong>\'mute\' </strong> - mutes all sound effects for the theme.\n		</li>\n		<li>\n			<strong>\'sound on\'</strong> - unmutes all sound effects for the theme.\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'stop\'</strong></span> - deactivates voice command.\n		</li>\n		<li>\n			<span class=\"text-primary\"><strong>\'help\'</strong></span> - brings up the command list\n		</li>\n		<li>\n			<span class=\"text-danger\"><strong>\'got it\'</strong></span> - closes help modal\n		</li>\n		<li>\n			<strong>\'hide navigation\'</strong> - toggle navigation collapse\n		</li>\n		<li>\n			<strong>\'show navigation\'</strong> - toggle navigation to open (can be used again to close)\n		</li>\n		<li>\n			<strong>\'scroll up\'</strong> - scrolls to the top of the page\n		</li>\n		<li>\n			<strong>\'scroll down\'</strong> - scrollts to the bottom of the page\n		</li>\n		<li>\n			<strong>\'go back\' </strong> - goes back in history (history -1 click)\n		</li>\n		<li>\n			<strong>\'logout\'</strong> - logs you out\n		</li>\n	</ul>\n	<br>\n	<h5>Adding your own commands</h5>\n	Voice Command supports up to 80 languages. Adding your own commands is extreamly easy. All commands are stored inside <strong>app.config.js</strong> file under the <code>var commands = {...}</code>. \n\n	<hr class=\"simple\">\n	<div class=\"text-right\">\n		<button type=\"button\" class=\"btn btn-success btn-lg\" data-dismiss=\"modal\">\n			Got it!\n		</button>\n	</div>\n\n</div>\n<!--<div class=\"modal-footer\">\n<button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\">Got it!</button>\n</div> -->");
 $templateCache.put("app/layout/shortcut/shortcut.tpl.html","<div id=\"shortcut\">\n	<ul>\n		<li>\n			<a href=\"#/inbox/\" class=\"jarvismetro-tile big-cubes bg-color-blue\"> <span class=\"iconbox\"> <i class=\"fa fa-envelope fa-4x\"></i> <span>Mail <span class=\"label pull-right bg-color-darken\">14</span></span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/calendar\" class=\"jarvismetro-tile big-cubes bg-color-orangeDark\"> <span class=\"iconbox\"> <i class=\"fa fa-calendar fa-4x\"></i> <span>Calendar</span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/maps\" class=\"jarvismetro-tile big-cubes bg-color-purple\"> <span class=\"iconbox\"> <i class=\"fa fa-map-marker fa-4x\"></i> <span>Maps</span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/invoice\" class=\"jarvismetro-tile big-cubes bg-color-blueDark\"> <span class=\"iconbox\"> <i class=\"fa fa-book fa-4x\"></i> <span>Invoice <span class=\"label pull-right bg-color-darken\">99</span></span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/gallery\" class=\"jarvismetro-tile big-cubes bg-color-greenLight\"> <span class=\"iconbox\"> <i class=\"fa fa-picture-o fa-4x\"></i> <span>Gallery </span> </span> </a>\n		</li>\n		<li>\n			<a href=\"#/profile\" class=\"jarvismetro-tile big-cubes selected bg-color-pinkDark\"> <span class=\"iconbox\"> <i class=\"fa fa-user fa-4x\"></i> <span>My Profile </span> </span> </a>\n		</li>\n	</ul>\n</div>");
@@ -3502,7 +3507,9 @@ angular.module('app.graphs').controller('FlotCtrl', function ($scope) {
 });
 'use strict';
 
-angular.module('app.home').controller('HomeController', function ($scope, $state) {
+angular.module('app.home').controller('HomeController', function ($scope, $state, $rootScope) {
+	$rootScope.$broadcast('$finishedRequest'); 
+
 	// Search value 
 	$scope.query = ''
 
@@ -3865,6 +3872,7 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 	$scope.tweet_list = null;
 	$scope.error_message = null;
 	$scope.type_class = null;
+	$scope.response = false;
 
 	// Redirect if there is no query value
 	if($scope.query == null){
@@ -3884,12 +3892,13 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 			$scope.tweet_list = tweet_list.tweets;
 			$scope.tweets = true;
 			$scope.total_tweets = tweet_list.tweets.length;
-
+			$scope.response = true;
 
 		}, function(err){
 			$scope.twees = false;
 			$scope.total_tweets = null;
 			$scope.tweet_list = null;
+			$scope.response = true;
 
 			if(err.type == 0){
 				$scope.error_message = "Tweets not found :(";
@@ -3906,7 +3915,7 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 
 	// Redirect to results
 	$scope.analyse = function(){
-		$state.go('app.results');
+		$state.go('app.results', {tweets: $scope.tweet_list, query: $scope.query});
 	}
 
 	
@@ -3914,7 +3923,86 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 });
 'use strict';
 
-angular.module('app.sentimentAnalysis').controller('ResultsController', function ($scope) {
+angular.module('app.sentimentAnalysis').controller('ResultsController', function ($scope, $state, $stateParams, RestFulAPI) {
+	$scope.tweet_list = $stateParams.tweets;
+	$scope.query = $stateParams.query;
+	$scope.error_message = null;
+	$scope.analysis = false;
+	$scope.type_class = null;
+	$scope.results = null;
+	$scope.response = false;
+
+	// Redirect if there is no tweet_list
+	if($scope.tweet_list == null || $scope.query == null){
+		$state.go('app.home');
+	}else{
+
+		if($scope.query[0] ==  '@'){
+			$scope.type_class = "nickname";
+		}else{
+			$scope.type_class = "hashtag";
+		}
+
+		var sentiment_query = {tweets: $scope.tweet_list};
+
+		RestFulAPI.get_analysis(sentiment_query).then(function(sentiment_data){
+			$scope.analysis = true;
+			$scope.results = sentiment_data;
+			$scope.results.score.positive_percentage =  $scope.results.score.positive_percentage * 100;
+			$scope.results.score.negative_percentage =  $scope.results.score.negative_percentage * 100;
+			$scope.results.score.neutral_percentage =  $scope.results.score.neutral_percentage * 100;
+			$scope.response = true;
+
+		}, function(err){
+			$scope.error_message = "Something went wrong :(";
+			$scope.analysis = false;
+			$scope.response = true;
+		});
+	}
+
+	$scope.$watch($scope.results, function(value){
+		if(value != undefined & value != null){
+			if ($.fn.easyPieChart) {
+				console.log('There is funciton');
+				console.log(value);
+
+                    $('.easy-pie-chart').each(function() {
+                    	console.log('find charts')
+                        var $this = $(this),
+                            barColor = $this.css('color') || $this.data('pie-color'),
+                            trackColor = $this.data('pie-track-color') || 'rgba(0,0,0,0.04)',
+                            size = parseInt($this.data('pie-size')) || 25;
+
+                        
+                        $this.easyPieChart({
+
+                            barColor : barColor,
+                            trackColor : trackColor,
+                            scaleColor : false,
+                            lineCap : 'butt',
+                            lineWidth : parseInt(size / 8.5),
+                            animate : 1500,
+                            rotate : -90,
+                            size : size,
+                            onStep: function(from, to, percent) {
+                                $(this.el).find('.percent').text(Math.round(percent));
+                            }
+
+                        });
+
+                        $this = null;
+
+                        });
+
+                } // end if
+		}
+		
+	})
+
+	// Redirect to home
+	$scope.change_search = function(){
+		$state.go('app.home')
+	}
 });
 'use strict';
 
@@ -3967,12 +4055,25 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
                 "content": "My first tweet :)!"
             }
     	]
-    }
+    };
+
+    var sentiment_data = {
+    	"number_found":2,
+    	"skipped":0,
+    	"score":{
+    		"positive_number":1,
+    		"positive_percentage":0.5,
+    		"negative_number":0,
+    		"negative_percentage":0.0,
+    		"neutral_number":1,
+    		"neutral_percentage":0.5
+    	}
+    };
 
     // End of data >>>>>>>>>>>>>>>>>>>>
 
 
-	this.$get = function($q, $http){
+	this.$get = function($q, $http, $rootScope){
 		/**
 		* Request to retrieve the sentiment analysis of a set of tweets.
 		* sentiment_query = {tweets: [{author: "nickname", data_time:"time", content:"tweet"} , <tweet> ..]}
@@ -3987,10 +4088,14 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
 			var url = server + 'tweet_sentiment/sentiment';
 	    	var dfd = $q.defer();
 	    	$http.post(url, sentiment_query).success(function(sentiment_data){
+	    		// Broadcast result of request
+                $rootScope.$broadcast('$finishedRequest'); 
 				dfd.resolve(sentiment_data);
 			}).error(function(err){
 				var error = {type: 1, message: JSON.stringify(err), data: err};
 				console.error(JSON.stringify(err));
+				// Broadcast result of request
+                $rootScope.$broadcast('$finishedRequest'); 
 				dfd.reject(error);
 			});
 			return dfd.promise;
@@ -4015,14 +4120,22 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
 	    	$http.post(url, tweet_query).success(function(tweet_list){
 	    		if(tweet_list.tweets.length == 0 && tweet_list.number_found == 0){
 	    			var error = {type: 0, message: "Tweets no found", data: tweet_list};
+	    			// Broadcast result of request
+                	$rootScope.$broadcast('$finishedRequest'); 
 	    			dfd.reject(error);
 	    		}else{
+	    			// Broadcast result of request
+                	$rootScope.$broadcast('$finishedRequest'); 
 	    			dfd.resolve(tweet_list);
 	    		}
 	    	}).error(function(err){
 	    			//Development purpose:
+	    			// Broadcast result of request
+                	$rootScope.$broadcast('$finishedRequest'); 
 	    			dfd.resolve(tweet_list);
 	    			/*var error = {type: 1, message: JSON.stringify(err), data: err};
+	    			// Broadcast result of request
+                	$rootScope.$broadcast('$finishedRequest');
 	    			dfd.reject(error);*/
 	    	});
 	    	return dfd.promise;
@@ -5701,7 +5814,9 @@ angular.module('SmartAdmin.Layout').directive('smartRouterAnimationWrap', functi
             });
 
             var destroyForEnd = $rootScope.$on('$viewContentLoaded', function (event) {
-                contentViewAnimEnd();
+                $rootScope.$on('$finishedRequest', function(event){
+                    contentViewAnimEnd();
+                });
             });
 
             element.on('$destroy', function(){
@@ -8216,9 +8331,42 @@ angular.module('app.graphs').directive('highchartTable', function (lazyScript) {
 'use strict';
 
 angular.module('app.graphs').directive('easyPieChartContainer', function () {
+    var initialize = function(){
+        if ($.fn.easyPieChart) {
+
+            $('.easy-pie-chart').each(function() {
+                var $this = $(this),
+                    barColor = $this.css('color') || $this.data('pie-color'),
+                    trackColor = $this.data('pie-track-color') || 'rgba(0,0,0,0.04)',
+                    size = parseInt($this.data('pie-size')) || 25;
+
+                
+                $this.easyPieChart({
+
+                    barColor : barColor,
+                    trackColor : trackColor,
+                    scaleColor : false,
+                    lineCap : 'butt',
+                    lineWidth : parseInt(size / 8.5),
+                    animate : 1500,
+                    rotate : -90,
+                    size : size,
+                    onStep: function(from, to, percent) {
+                        $(this.el).find('.percent').text(Math.round(percent));
+                    }
+
+                });
+
+                $this = null;
+
+                });
+
+        } // end if
+    }
+
     return {
         restrict: 'A',
-        link: function (scope, element) {
+        link: function ($scope, element, attrs) {
             /*
              * EASY PIE CHARTS
              * DEPENDENCY: js/plugins/easy-pie-chart/jquery.easy-pie-chart.min.js
@@ -8227,34 +8375,32 @@ angular.module('app.graphs').directive('easyPieChartContainer', function () {
              * 	  	  </div>
              */
 
-            if ($.fn.easyPieChart) {
 
-                $('.easy-pie-chart').each(function() {
-                    var $this = $(this),
-                        barColor = $this.css('color') || $this.data('pie-color'),
-                        trackColor = $this.data('pie-track-color') || 'rgba(0,0,0,0.04)',
-                        size = parseInt($this.data('pie-size')) || 25;
-
-                    $this.easyPieChart({
-
-                        barColor : barColor,
-                        trackColor : trackColor,
-                        scaleColor : false,
-                        lineCap : 'butt',
-                        lineWidth : parseInt(size / 8.5),
-                        animate : 1500,
-                        rotate : -90,
-                        size : size,
-                        onStep: function(from, to, percent) {
-                            $(this.el).find('.percent').text(Math.round(percent));
-                        }
-
+             // Verify if it is being used with asynchronous data
+             if(attrs.hasOwnProperty('asynchronous')){
+                if(attrs.asynchronous){
+                    // Load asysnchronously
+                    // Trigger when data changes (when it gets a value)
+                    var watch = $scope.$watch(function() {
+                        return attrs['data'];
+                    }, function() {
+                        // Wait for templates to render
+                        $scope.$evalAsync(function() {
+                            // Finally, directives are evaluated
+                            // and templates are renderer here
+                            var data = attrs['data'];
+                            if(data){
+                                initialize();
+                            }
+                        });
                     });
 
-                    $this = null;
-                });
-
-            } // end if
+                }else{
+                    initialize();
+                }
+             }else{
+                initialize();
+             }
         }
     }
 });

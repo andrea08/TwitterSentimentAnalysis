@@ -30,6 +30,10 @@ angular.module('app.sentimentAnalysis', ['ui.router'])
                     templateUrl: 'app/sentiment-analysis/views/results.html',
                     controller: 'ResultsController'
                 }
+            },
+            params: {
+                tweets: null,
+                query: null
             }
         })
 });

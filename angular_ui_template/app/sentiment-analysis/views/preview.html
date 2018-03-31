@@ -5,7 +5,7 @@
 
     <!-- content -->
 
-    <div class="row">
+    <div class="row" ng-if="response">
     	<div ng-if="tweets" class="col-lg-6 col-lg-offset-3">
     		<h3>
     			You looked for <strong><i ng-class="{'txt-color-teal': type_class=='hashtag', 'txt-color-magenta': type_class=='nickname'}">{{query}}</i></strong>

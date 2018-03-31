@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('app.home').controller('HomeController', function ($scope, $state) {
+angular.module('app.home').controller('HomeController', function ($scope, $state, $rootScope) {
+	$rootScope.$broadcast('$finishedRequest'); 
+
 	// Search value 
 	$scope.query = ''
 

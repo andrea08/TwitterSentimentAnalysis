@@ -2,10 +2,89 @@
 <div class="row">
     <big-breadcrumbs items="['Results', 'Sentiment Analysis']" icon="search" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
 </div>
-
     <!-- content -->
+    <div class="row" ng-if='response'>
 
-    <div class="row">
-    	<p>Here you are!</p>
+    	<div ng-if="analysis" class="col-lg-6 col-lg-offset-3">
+    		<h3>
+    			You looked for <strong><i ng-class="{'txt-color-teal': type_class=='hashtag', 'txt-color-magenta': type_class=='nickname'}">{{query}}</i></strong>
+    		</h3>
+
+			<div id="widget-colors-widget" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-color="purple" data-jarvis-widget>
+			    <header>
+			        <h2>Tweets Analyzed  <strong><i>{{results.number_found}}</i></strong> </h2>
+			        <p ng-if="results.skipped > 0"> We are sorry, <strong><i>{{results.skipped}}</i></strong> could not be analyzed</p> 
+			    </header>
+			    <!-- widget div-->
+			    <div>
+			        <!-- widget content -->
+			        <div class="widget-body">
+			            <div class="row">
+			                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1" data-easy-pie-chart-container asynchronous="true" data="{{results.score}}">
+			                	<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+						            <div class="easy-pie-chart txt-color-greenLight" data-percent="{{results.score.positive_percentage}}" data-pie-size="100">
+						                <span class="percent percent-sign"> </span> 
+						            </div>
+						            <span class="easy-pie-title"> Positive Sentiment  <i class="fa fa-smile-o icon-color-good"></i></span>
+						        </div>
+						        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+						            <div class="easy-pie-chart txt-color-orangeDark" data-percent="{{results.score.neutral_percentage}}" data-pie-size="100">
+						                <span class="percent percent-sign"> </span> 
+						            </div>
+						            <span class="easy-pie-title"> Neutal Sentiment  <i class="fa fa-meh-o icon-color-neutral"></i></span>
+						        </div>
+						        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 text-center">
+						            <div class="easy-pie-chart txt-color-red" data-percent="{{results.score.negative_percentage}}" data-pie-size="100">
+						                <span class="percent percent-sign"> </span> 
+						            </div>
+						            <span class="easy-pie-title"> Negative Sentiment  <i class="fa fa-frown-o icon-color-bad"></i></span>
+						        </div>
+			                </div>
+			            </div>
+			        </div>
+			        <!-- end widget content fa-frown-o fa-meh-o -->
+			    </div>
+			    <!-- end widget div -->
+			</div>
+
+			<div class="text-center">
+				<button class="btn btn-labeled btn-success" ng-click="change_search()"> 
+					<span class="btn-label">
+						<i class="glyphicon glyphicon-refresh"></i>
+					</span>
+					New search
+				</button>
+			</div>
+    	</div>
+
+    	<div ng-if="!analysis" class="col-lg-4 col-lg-offset-4">
+    		<div id="widget-colors-widget" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-color="red" data-jarvis-widget>
+			    <header>
+			        <h2><strong>Opps!!!</strong></h2>
+			    </header>
+			    <!-- widget div-->
+			    <div>
+			        <!-- widget content -->
+			        <div class="widget-body">
+			            <div class="row">
+			                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
+
+			                	<h6 class="alert semi-bold">
+			                		{{error_message}}
+			                	</h6>
+
+			                	<button type="button" class="btn btn-labeled btn-default" ng-click="change_search()">
+									 <span class="btn-label">
+									  <i class="glyphicon glyphicon-refresh"></i>
+									 </span>Go home
+								</button>
+			                </div>
+			            </div>
+			        </div>
+			        <!-- end widget content -->
+			    </div>
+			    <!-- end widget div -->
+			</div>    		
+    	</div>
     </div>
 </div>

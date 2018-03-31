@@ -9,6 +9,7 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 	$scope.tweet_list = null;
 	$scope.error_message = null;
 	$scope.type_class = null;
+	$scope.response = false;
 
 	// Redirect if there is no query value
 	if($scope.query == null){
@@ -28,12 +29,13 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 			$scope.tweet_list = tweet_list.tweets;
 			$scope.tweets = true;
 			$scope.total_tweets = tweet_list.tweets.length;
-
+			$scope.response = true;
 
 		}, function(err){
 			$scope.twees = false;
 			$scope.total_tweets = null;
 			$scope.tweet_list = null;
+			$scope.response = true;
 
 			if(err.type == 0){
 				$scope.error_message = "Tweets not found :(";
@@ -50,7 +52,7 @@ angular.module('app.sentimentAnalysis').controller('PreviewController', function
 
 	// Redirect to results
 	$scope.analyse = function(){
-		$state.go('app.results');
+		$state.go('app.results', {tweets: $scope.tweet_list, query: $scope.query});
 	}
 
 	
