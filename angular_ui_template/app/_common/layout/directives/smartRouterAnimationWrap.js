@@ -62,6 +62,7 @@ angular.module('SmartAdmin.Layout').directive('smartRouterAnimationWrap', functi
             });
 
             var destroyForEnd = $rootScope.$on('$viewContentLoaded', function (event) {
+                // Remove spinner when there is a response from the requests
                 $rootScope.$on('$finishedRequest', function(event){
                     contentViewAnimEnd();
                 });

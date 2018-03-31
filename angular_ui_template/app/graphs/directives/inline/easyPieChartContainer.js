@@ -1,6 +1,9 @@
 'use strict';
 
 angular.module('app.graphs').directive('easyPieChartContainer', function () {
+    /**
+    * Execute the jquery to load the charts
+    */
     var initialize = function(){
         if ($.fn.easyPieChart) {
 

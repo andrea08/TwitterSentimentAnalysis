@@ -1,6 +1,16 @@
 'use strict';
 
+/**
+* @author: Maria Andrea Cruz Blandon
+* Controller of the results view. This allow to load the analysis of a list of tweets. It uses RestFulAPI provider to request
+* the analysis of a list of tweets. If there is not query and tweets list in the request that load this view the user is 
+* redirected to home (When the user tries to load the view directly without following the process of search).
+* If the response of the request is success then the analysis is load, in the case of percentages these are multiplicated 
+* by 100, because that is the format used in easy-pie-chart. If the response is rejection then a error message is show.
+* The user can return to home using the buttons ('go home' or 'new search')
+*/
 angular.module('app.sentimentAnalysis').controller('ResultsController', function ($scope, $state, $stateParams, RestFulAPI) {
+	// Attributes of the controller. Values used to manage the visibility of components or values used in the view
 	$scope.tweet_list = $stateParams.tweets;
 	$scope.query = $stateParams.query;
 	$scope.error_message = null;
@@ -36,45 +46,6 @@ angular.module('app.sentimentAnalysis').controller('ResultsController', function
 			$scope.response = true;
 		});
 	}
-
-	$scope.$watch($scope.results, function(value){
-		if(value != undefined & value != null){
-			if ($.fn.easyPieChart) {
-				console.log('There is funciton');
-				console.log(value);
-
-                    $('.easy-pie-chart').each(function() {
-                    	console.log('find charts')
-                        var $this = $(this),
-                            barColor = $this.css('color') || $this.data('pie-color'),
-                            trackColor = $this.data('pie-track-color') || 'rgba(0,0,0,0.04)',
-                            size = parseInt($this.data('pie-size')) || 25;
-
-                        
-                        $this.easyPieChart({
-
-                            barColor : barColor,
-                            trackColor : trackColor,
-                            scaleColor : false,
-                            lineCap : 'butt',
-                            lineWidth : parseInt(size / 8.5),
-                            animate : 1500,
-                            rotate : -90,
-                            size : size,
-                            onStep: function(from, to, percent) {
-                                $(this.el).find('.percent').text(Math.round(percent));
-                            }
-
-                        });
-
-                        $this = null;
-
-                        });
-
-                } // end if
-		}
-		
-	})
 
 	// Redirect to home
 	$scope.change_search = function(){

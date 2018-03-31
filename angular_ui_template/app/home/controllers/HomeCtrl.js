@@ -1,5 +1,9 @@
 'use strict';
-
+/**
+* @author: Maria Andrea Cruz Blandon
+* Controller of home page. Validates if the search is by nickname or hashtag. Redirects to preview once the search
+* is valid and the user click on Preview button. Trigger $finishedRequest event to load the page (hide spinner)
+*/
 angular.module('app.home').controller('HomeController', function ($scope, $state, $rootScope) {
 	$rootScope.$broadcast('$finishedRequest'); 
 

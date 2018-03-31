@@ -1,5 +1,15 @@
 'use strict';
 
+/**
+* @author: Maria Andrea Cruz Blandon
+* Provider which manage the requests sent to the Django RestFulAPI.
+* methods available:
+* get_tweets: Retrieve tweets of a query
+* get_analysis: Retrieve the sentiment analysis of a list of tweets
+* Both methods return a promise. This one can be successful in which case the tweets or the analysis is sent as result. Or it can 
+* be rejection in which case a code for the type of error will be sent, particularly because in the case of tweets, one error is
+* 'tweets no found' but the request response will be successful then it is necessary to identify this case.
+*/
 angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
 	/**
 	* This provider will send the request to the Django RestFulAPI, and process the responses as well.

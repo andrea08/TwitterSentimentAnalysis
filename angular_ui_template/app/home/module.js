@@ -1,6 +1,9 @@
 "use strict";
 
-
+/**
+* @author: Template
+* Loads the home page, which allow search tweets by nickname or hashtag
+*/
 angular.module('app.home', ['ui.router'])
 .config(function ($stateProvider) {
 
