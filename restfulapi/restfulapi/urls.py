@@ -19,4 +19,5 @@ from tweet_sentiment import views
 
 urlpatterns = [
     url(r'^tweet_sentiment/sentiment', views.sentiment),
+    url(r'^tweet_sentiment/tweets', views.tweets),
 ]
