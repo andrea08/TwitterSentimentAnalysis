@@ -4,5 +4,13 @@ restfulapi/*/migrations/*
 *.pyc
 restfulapi/media/*
 
+angularapp/logs/*
+angularapp/node_modules/
+angularapp/bower_components/
+angularapp/tmp
+
+
 # Do not ignore section
 !restfulapi/*/migrations/__init__.py
+!.gitkeep
+

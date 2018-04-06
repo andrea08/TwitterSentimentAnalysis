@@ -1,0 +1,36 @@
+<div id="content">
+<div class="row">
+    <big-breadcrumbs items="['Search', 'Search by nickname or hashtag']" icon="search" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+</div>
+
+    <!-- content -->
+
+    <div class="row">
+    	<div class="col-lg-4 col-lg-offset-4">
+    		<!-- input: search field -->
+    		<form name="search_form" class="header-search">
+		        <input id="search-fld" type="text" name="search_input" placeholder="Find tweets" ng-model='query' ng-change='change(search_form)'>
+		        <button ng-disabled="search_form.$invalid || search_form.$pristine" ng-click="search()">
+		            <i class="fa fa-search"></i>
+		        </button>
+		    </form>
+		    <div class="error-container text-left" ng-messages="search_form.search_input.$error">
+		        <div class="txt-color-red" ng-show="search_form.search_input.$error.single_word" ng-message="single_word">
+		          	<i class="fa fa-warning"></i>
+		          	Your search should be a single word without spaces
+		        </div>
+		        <div class="txt-color-red" ng-show="search_form.search_input.$error.symbol" ng-message="symbol">
+		          	<i class="fa fa-warning"></i>
+		          	Your search should start with a # for hashtag or an @ for nickname
+		        </div>
+		        <div class="txt-color-red" ng-show="search_form.search_input.$error.required" ng-message="required">
+		          	<i class="fa fa-warning"></i>
+		          	Your search is empty
+		        </div>
+
+	      	</div>
+		    <!-- end input: search field -->
+    	</div>
+    </div>
+</div>
+	
