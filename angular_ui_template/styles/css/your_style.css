@@ -1,0 +1,53 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+
+ /*HOME*/
+#logo img {
+    width: 20px;
+    height: auto;
+    padding-left: 3px;
+}
+
+#logo-group>span {
+	width: 100%;
+	font-size: 1.2em;
+	color: #f7f7f7;
+}
+
+/**SEARCH INPUT**/
+.smart-style-2 .header-search>input[type=text] {
+	border-radius: 5px;
+	background: white;
+	color: #2c3742;
+}
+
+.smart-style-2 .header-search>button{
+	top: 1px;
+	color: #2c3742;
+}
+
+/** RESULTS **/
+.easy-pie-title{
+	width: auto;
+}
+.icon-color-neutral{
+	color: #ff862a;
+    font-size: 18px;
+}

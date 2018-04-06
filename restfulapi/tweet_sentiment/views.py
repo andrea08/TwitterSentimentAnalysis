@@ -8,7 +8,7 @@ from tweet_sentiment.google_sentiment_analysis.analyze_tweets import analyze_twe
 from tweet_sentiment.serializers import SentimentQuerySerializer, SentimentDataSerializer, ErrorSerializer
 
 
-@api_view(["GET"])
+@api_view(["GET", 'POST'])
 def sentiment(request):
     """
     Receive a `SentimentQuery` and sent it to Google for analysis, then process the results and return the
@@ -19,6 +19,7 @@ def sentiment(request):
 
     # Deserialize the input and check if it's valid
     in_serializer = SentimentQuerySerializer(data=request.data)
+    print(request.data)
     if in_serializer.is_valid():
         query = in_serializer.save()
 

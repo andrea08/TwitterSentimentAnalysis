@@ -1,0 +1,88 @@
+<div id="content">
+<div class="row">
+    <big-breadcrumbs items="['Preview', 'This is what are you looking for?']" icon="search" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+</div>
+
+    <!-- content -->
+
+    <div class="row" ng-if="response">
+    	<div ng-if="tweets" class="col-lg-6 col-lg-offset-3">
+    		<h3>
+    			You looked for <strong><i ng-class="{'txt-color-teal': type_class=='hashtag', 'txt-color-magenta': type_class=='nickname'}">{{query}}</i></strong>
+    		</h3>
+
+			<div id="widget-colors-widget" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-color="teal" data-jarvis-widget>
+			    <header>
+			        <h2><strong>Tweets</strong> <i>{{total_tweets}}</i></h2>
+			    </header>
+			    <!-- widget div-->
+			    <div>
+			        <!-- widget content -->
+			        <div class="widget-body">
+			            <div class="row">
+			                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+			                	<div ng-repeat="tweet in tweet_list" class="well">
+			                		<h5><strong>{{tweet.author}}</strong>
+			                		<code>{{tweet.date_time}}</code>
+			                    	<br>
+			                    	<p>
+			                    		{{tweet.content}}
+			                    	</p>
+			                	</div>
+			                </div>
+			            </div>
+			        </div>
+			        <!-- end widget content -->
+			    </div>
+			    <!-- end widget div -->
+			</div>
+
+			<div>
+				<button class="pull-left btn btn-labeled btn-default" ng-click="change_search()"> 
+					<span class="btn-label">
+						<i class="glyphicon glyphicon-refresh"></i>
+					</span>
+					Go home
+				</button>
+				<button class="pull-right btn btn-labeled btn-success" ng-click="analyse()">
+					<span class="btn-label">
+						<i class="glyphicon glyphicon-ok"></i>
+					</span>
+					Analyse 
+				</button>
+			</div>
+
+			
+    	</div>
+
+    	<div ng-if="!tweets" class="col-lg-4 col-lg-offset-4">
+    		<div id="widget-colors-widget" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-color="red" data-jarvis-widget>
+			    <header>
+			        <h2><strong>Opps!!!</strong></h2>
+			    </header>
+			    <!-- widget div-->
+			    <div>
+			        <!-- widget content -->
+			        <div class="widget-body">
+			            <div class="row">
+			                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 text-center">
+
+			                	<h6 class="alert semi-bold">
+			                		{{error_message}}
+			                	</h6>
+
+			                	<button type="button" class="btn btn-labeled btn-default" ng-click="change_search()">
+									 <span class="btn-label">
+									  <i class="glyphicon glyphicon-refresh"></i>
+									 </span>Go home
+								</button>
+			                </div>
+			            </div>
+			        </div>
+			        <!-- end widget content -->
+			    </div>
+			    <!-- end widget div -->
+			</div>    		
+    	</div>
+    </div>
+</div>
