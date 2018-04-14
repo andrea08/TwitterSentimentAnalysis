@@ -60,7 +60,8 @@ gulp.task('watch', function(){
 
 gulp.task('connect', function() {
     connect.server({
-        port: 8888
+	port: process.env.PORT || 8888,
+ 	livereload: false
     });
 });
 
