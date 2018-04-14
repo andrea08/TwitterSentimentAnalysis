@@ -9,7 +9,7 @@ angular.module('SmartAdmin.Layout').directive('smartRouterAnimationWrap', functi
             element.addClass('router-animation-container');
 
 
-            var $loader = $('<div class="router-animation-loader"><i class="fa fa-gear fa-4x fa-spin"></i></div>')
+            var $loader = $('<div class="router-animation-loader"><i class="fa fa-gear fa-3x fa-spin"></i></div>')
                 .css({
                     position: 'absolute',
                     top: 50,
@@ -24,7 +24,7 @@ angular.module('SmartAdmin.Layout').directive('smartRouterAnimationWrap', functi
             function contentViewAnimStart() {
                 needRunContentViewAnimEnd = true;
                 element.css({
-                    height: element.height() + 'px',
+                    height: 'auto',
                     overflow: 'hidden'
                 }).addClass('active');
                 $loader.fadeIn();

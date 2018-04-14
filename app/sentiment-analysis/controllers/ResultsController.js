@@ -34,10 +34,16 @@ angular.module('app.sentimentAnalysis').controller('ResultsController', function
 
 		RestFulAPI.get_analysis(sentiment_query).then(function(sentiment_data){
 			$scope.analysis = true;
-			$scope.results = sentiment_data;
+
+			// Sentiment statistics
+			$scope.results = sentiment_data[0];
 			$scope.results.score.positive_percentage =  $scope.results.score.positive_percentage * 100;
 			$scope.results.score.negative_percentage =  $scope.results.score.negative_percentage * 100;
 			$scope.results.score.neutral_percentage =  $scope.results.score.neutral_percentage * 100;
+
+			// Most negative, most positive
+			$scope.min_max = sentiment_data[1];
+
 			$scope.response = true;
 
 		}, function(err){

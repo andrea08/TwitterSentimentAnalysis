@@ -13,7 +13,7 @@
 
 			<div id="widget-colors-widget" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-color="teal" data-jarvis-widget>
 			    <header>
-			        <h2><strong>Tweets</strong> <i>{{total_tweets}}</i></h2>
+			        <h2><strong>Tweets found:</strong> <i>{{total_tweets}}</i> <label class="number-tweets" for="number_tweets">Preview first: </label><input name="number_tweets" class="numberInput" type="number" min="1" max="100" ng-model="preview_tweets"> </h2>
 			    </header>
 			    <!-- widget div-->
 			    <div>
@@ -21,9 +21,9 @@
 			        <div class="widget-body">
 			            <div class="row">
 			                <div class="col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
-			                	<div ng-repeat="tweet in tweet_list" class="well">
+			                	<div ng-repeat="tweet in tweet_list | limitTo: preview_tweets" class="well">
 			                		<h5><strong>{{tweet.author}}</strong>
-			                		<code>{{tweet.date_time}}</code>
+			                		<code>{{tweet.date_time | epoch }}</code>
 			                    	<br>
 			                    	<p>
 			                    		{{tweet.content}}
@@ -48,7 +48,7 @@
 					<span class="btn-label">
 						<i class="glyphicon glyphicon-ok"></i>
 					</span>
-					Analyse 
+					Analyze
 				</button>
 			</div>
 
@@ -58,7 +58,7 @@
     	<div ng-if="!tweets" class="col-lg-4 col-lg-offset-4">
     		<div id="widget-colors-widget" data-widget-togglebutton="false" data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-colorbutton="false" data-widget-color="red" data-jarvis-widget>
 			    <header>
-			        <h2><strong>Opps!!!</strong></h2>
+			        <h2><strong>Sorry!</strong></h2>
 			    </header>
 			    <!-- widget div-->
 			    <div>

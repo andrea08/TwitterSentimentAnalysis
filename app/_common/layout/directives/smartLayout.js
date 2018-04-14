@@ -79,7 +79,6 @@ angular.module('SmartAdmin.Layout').directive('smartLayout', function ($rootScop
                 var contentXPad = $content.outerWidth(true) - $content.width();
                 var contentYPad = $content.outerHeight(true) - $content.height();
 
-
                 calcWidth = $window.width() - menuWidth - contentXPad;
                 calcHeight = $window.height() - menuHeight - contentYPad - $navigation.height() - $ribbon.height() - $footer.height();
 

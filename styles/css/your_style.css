@@ -18,6 +18,10 @@
  * - CUSTOM STYLES
  */
 
+ html{
+ 	background: white;
+ }
+
  /*HOME*/
 #logo img {
     width: 20px;
@@ -32,6 +36,10 @@
 }
 
 /**SEARCH INPUT**/
+.smart-style-2 .header-search{
+	display: block !important;
+}
+
 .smart-style-2 .header-search>input[type=text] {
 	border-radius: 5px;
 	background: white;
@@ -50,4 +58,56 @@
 .icon-color-neutral{
 	color: #ff862a;
     font-size: 18px;
+}
+
+.red-tweet {
+	background-color: #ff9a9a;
+}
+
+.green-tweet {
+	background-color: #8aa680;
+}
+
+/** PREVIEW **/
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+
+   opacity: 1;
+
+}
+
+label.number-tweets {
+	margin-left: 15px;
+	display: inline-block;
+}
+
+input.numberInput{
+    color: #333333;
+    height: 25px;
+    width: 60px;
+    margin-left: 6px;
+    line-height: 2em;
+    -webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 1px solid #558989;
+}
+
+.jarviswidget>header{
+	height: 50px;
+}
+
+.jarviswidget>header h2{
+	line-height: 50px;
+	text-overflow: clip;
+    width: 100%;
+}
+
+/** SPINNER **/
+.router-animation-container .router-animation-loader{
+    position: fixed !important;
+    top: 30% !important;
+    left: 30% !important;
+    font-size: 3em;  
 }

@@ -2082,10 +2082,10 @@ angular.module('app.dashboard').controller('DashboardCtrl', function ($scope, $i
 
 });
 angular.module("app").run(["$templateCache", function($templateCache) {$templateCache.put("app/dashboard/live-feeds.tpl.html","<div jarvis-widget id=\"live-feeds-widget\" data-widget-togglebutton=\"false\" data-widget-editbutton=\"false\"\n     data-widget-fullscreenbutton=\"false\" data-widget-colorbutton=\"false\" data-widget-deletebutton=\"false\">\n<!-- widget options:\nusage: <div class=\"jarviswidget\" id=\"wid-id-0\" data-widget-editbutton=\"false\">\n\ndata-widget-colorbutton=\"false\"\ndata-widget-editbutton=\"false\"\ndata-widget-togglebutton=\"false\"\ndata-widget-deletebutton=\"false\"\ndata-widget-fullscreenbutton=\"false\"\ndata-widget-custombutton=\"false\"\ndata-widget-collapsed=\"true\"\ndata-widget-sortable=\"false\"\n\n-->\n<header>\n    <span class=\"widget-icon\"> <i class=\"glyphicon glyphicon-stats txt-color-darken\"></i> </span>\n\n    <h2>Live Feeds </h2>\n\n    <ul class=\"nav nav-tabs pull-right in\" id=\"myTab\">\n        <li class=\"active\">\n            <a data-toggle=\"tab\" href=\"#s1\"><i class=\"fa fa-clock-o\"></i> <span class=\"hidden-mobile hidden-tablet\">Live Stats</span></a>\n        </li>\n\n        <li>\n            <a data-toggle=\"tab\" href=\"#s2\"><i class=\"fa fa-facebook\"></i> <span class=\"hidden-mobile hidden-tablet\">Social Network</span></a>\n        </li>\n\n        <li>\n            <a data-toggle=\"tab\" href=\"#s3\"><i class=\"fa fa-dollar\"></i> <span class=\"hidden-mobile hidden-tablet\">Revenue</span></a>\n        </li>\n    </ul>\n\n</header>\n\n<!-- widget div-->\n<div class=\"no-padding\">\n\n    <div class=\"widget-body\">\n        <!-- content -->\n        <div id=\"myTabContent\" class=\"tab-content\">\n            <div class=\"tab-pane fade active in padding-10 no-padding-bottom\" id=\"s1\">\n                <div class=\"row no-space\">\n                    <div class=\"col-xs-12 col-sm-12 col-md-8 col-lg-8\">\n														<span class=\"demo-liveupdate-1\"> <span\n                                                                class=\"onoffswitch-title\">Live switch</span> <span\n                                                                class=\"onoffswitch\">\n																<input type=\"checkbox\" name=\"start_interval\" ng-model=\"autoUpdate\"\n                                                                       class=\"onoffswitch-checkbox\" id=\"start_interval\">\n																<label class=\"onoffswitch-label\" for=\"start_interval\">\n                                                                    <span class=\"onoffswitch-inner\"\n                                                                          data-swchon-text=\"ON\"\n                                                                          data-swchoff-text=\"OFF\"></span>\n                                                                    <span class=\"onoffswitch-switch\"></span>\n                                                                </label> </span> </span>\n\n                        <div id=\"updating-chart\" class=\"chart-large txt-color-blue\" flot-basic flot-data=\"liveStats\" flot-options=\"liveStatsOptions\"></div>\n\n                    </div>\n                    <div class=\"col-xs-12 col-sm-12 col-md-4 col-lg-4 show-stats\">\n\n                        <div class=\"row\">\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> My Tasks <span\n                                    class=\"pull-right\">130/200</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blueDark\" style=\"width: 65%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> Transfered <span\n                                    class=\"pull-right\">440 GB</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blue\" style=\"width: 34%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> Bugs Squashed<span\n                                    class=\"pull-right\">77%</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-blue\" style=\"width: 77%;\"></div>\n                                </div>\n                            </div>\n                            <div class=\"col-xs-6 col-sm-6 col-md-12 col-lg-12\"><span class=\"text\"> User Testing <span\n                                    class=\"pull-right\">7 Days</span> </span>\n\n                                <div class=\"progress\">\n                                    <div class=\"progress-bar bg-color-greenLight\" style=\"width: 84%;\"></div>\n                                </div>\n                            </div>\n\n                            <span class=\"show-stat-buttons\"> <span class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\"> <a\n                                    href-void class=\"btn btn-default btn-block hidden-xs\">Generate PDF</a> </span> <span\n                                    class=\"col-xs-12 col-sm-6 col-md-6 col-lg-6\"> <a href-void\n                                                                                     class=\"btn btn-default btn-block hidden-xs\">Report\n                                a bug</a> </span> </span>\n\n                        </div>\n\n                    </div>\n                </div>\n\n                <div class=\"show-stat-microcharts\" data-sparkline-container data-easy-pie-chart-container>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n\n                        <div class=\"easy-pie-chart txt-color-orangeDark\" data-percent=\"33\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">35</span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Server Load <i class=\"fa fa-caret-up icon-color-bad\"></i> </span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-greenLight\"><i class=\"fa fa-caret-up\"></i> 97%</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blueLight\"><i class=\"fa fa-caret-down\"></i> 44%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-greenLight hidden-sm hidden-md pull-right\"\n                             data-sparkline-type=\"line\" data-sparkline-height=\"33px\" data-sparkline-width=\"70px\"\n                             data-fill-color=\"transparent\">\n                            130, 187, 250, 257, 200, 210, 300, 270, 363, 247, 270, 363, 247\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-greenLight\" data-percent=\"78.9\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">78.9 </span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Disk Space <i class=\"fa fa-caret-down icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-blueDark\"><i class=\"fa fa-caret-up\"></i> 76%</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blue\"><i class=\"fa fa-caret-down\"></i> 3%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-blue hidden-sm hidden-md pull-right\" data-sparkline-type=\"line\"\n                             data-sparkline-height=\"33px\" data-sparkline-width=\"70px\" data-fill-color=\"transparent\">\n                            257, 200, 210, 300, 270, 363, 130, 187, 250, 247, 270, 363, 247\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-blue\" data-percent=\"23\" data-pie-size=\"50\">\n                            <span class=\"percent percent-sign\">23 </span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Transfered <i class=\"fa fa-caret-up icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-darken\">10GB</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blueDark\"><i class=\"fa fa-caret-up\"></i> 10%</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-darken hidden-sm hidden-md pull-right\"\n                             data-sparkline-type=\"line\" data-sparkline-height=\"33px\" data-sparkline-width=\"70px\"\n                             data-fill-color=\"transparent\">\n                            200, 210, 363, 247, 300, 270, 130, 187, 250, 257, 363, 247, 270\n                        </div>\n                    </div>\n                    <div class=\"col-xs-12 col-sm-3 col-md-3 col-lg-3\">\n                        <div class=\"easy-pie-chart txt-color-darken\" data-percent=\"36\" data-pie-size=\"50\">\n                            <span class=\"percent degree-sign\">36 <i class=\"fa fa-caret-up\"></i></span>\n                        </div>\n                        <span class=\"easy-pie-title\"> Temperature <i\n                                class=\"fa fa-caret-down icon-color-good\"></i></span>\n                        <ul class=\"smaller-stat hidden-sm pull-right\">\n                            <li>\n                                <span class=\"label bg-color-red\"><i class=\"fa fa-caret-up\"></i> 124</span>\n                            </li>\n                            <li>\n                                <span class=\"label bg-color-blue\"><i class=\"fa fa-caret-down\"></i> 40 F</span>\n                            </li>\n                        </ul>\n                        <div class=\"sparkline txt-color-red hidden-sm hidden-md pull-right\" data-sparkline-type=\"line\"\n                             data-sparkline-height=\"33px\" data-sparkline-width=\"70px\" data-fill-color=\"transparent\">\n                            2700, 3631, 2471, 2700, 3631, 2471, 1300, 1877, 2500, 2577, 2000, 2100, 3000\n                        </div>\n                    </div>\n                </div>\n\n            </div>\n            <!-- end s1 tab pane -->\n\n            <div class=\"tab-pane fade\" id=\"s2\">\n                <div class=\"widget-body-toolbar bg-color-white\">\n\n                    <form class=\"form-inline\" role=\"form\">\n\n                        <div class=\"form-group\">\n                            <label class=\"sr-only\" for=\"s123\">Show From</label>\n                            <input type=\"email\" class=\"form-control input-sm\" id=\"s123\" placeholder=\"Show From\">\n                        </div>\n                        <div class=\"form-group\">\n                            <input type=\"email\" class=\"form-control input-sm\" id=\"s124\" placeholder=\"To\">\n                        </div>\n\n                        <div class=\"btn-group hidden-phone pull-right\">\n                            <a class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\"><i\n                                    class=\"fa fa-cog\"></i> More <span class=\"caret\"> </span> </a>\n                            <ul class=\"dropdown-menu pull-right\">\n                                <li>\n                                    <a href-void><i class=\"fa fa-file-text-alt\"></i> Export to PDF</a>\n                                </li>\n                                <li>\n                                    <a href-void><i class=\"fa fa-question-sign\"></i> Help</a>\n                                </li>\n                            </ul>\n                        </div>\n\n                    </form>\n\n                </div>\n                <div class=\"padding-10\">\n                    <div id=\"statsChart\" class=\"chart-large has-legend-unique\" flot-basic flot-data=\"statsData\" flot-options=\"statsDisplayOptions\"></div>\n                </div>\n\n            </div>\n            <!-- end s2 tab pane -->\n\n            <div class=\"tab-pane fade\" id=\"s3\">\n\n                <div class=\"widget-body-toolbar bg-color-white smart-form\" id=\"rev-toggles\">\n\n                    <div class=\"inline-group\">\n\n                        <label for=\"gra-0\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-0\" ng-model=\"targetsShow\">\n                            <i></i> Target </label>\n                        <label for=\"gra-1\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-1\" ng-model=\"actualsShow\">\n                            <i></i> Actual </label>\n                        <label for=\"gra-2\" class=\"checkbox\">\n                            <input type=\"checkbox\" id=\"gra-2\" ng-model=\"signupsShow\">\n                            <i></i> Signups </label>\n                    </div>\n\n                    <div class=\"btn-group hidden-phone pull-right\">\n                        <a class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\"><i\n                                class=\"fa fa-cog\"></i> More <span class=\"caret\"> </span> </a>\n                        <ul class=\"dropdown-menu pull-right\">\n                            <li>\n                                <a href-void><i class=\"fa fa-file-text-alt\"></i> Export to PDF</a>\n                            </li>\n                            <li>\n                                <a href-void><i class=\"fa fa-question-sign\"></i> Help</a>\n                            </li>\n                        </ul>\n                    </div>\n\n                </div>\n\n                <div class=\"padding-10\">\n                    <div id=\"flotcontainer\" class=\"chart-large has-legend-unique\" flot-basic flot-data=\"revenewData\" flot-options=\"revenewDisplayOptions\" ></div>\n                </div>\n            </div>\n            <!-- end s3 tab pane -->\n        </div>\n\n        <!-- end content -->\n    </div>\n\n</div>\n<!-- end widget div -->\n</div>\n");
-$templateCache.put("app/layout/layout.tpl.html","<!-- HEADER -->\n<div data-smart-include=\"app/layout/partials/header.tpl.html\" class=\"placeholder-header\"></div>\n<!-- END HEADER -->\n\n\n<!-- Left panel : Navigation area -->\n<!-- Note: This width of the aside area can be adjusted through LESS variables -->\n<div data-smart-include=\"app/layout/partials/navigation.tpl.html\" class=\"placeholder-left-panel\"></div>\n\n<!-- END NAVIGATION -->\n\n<!-- MAIN PANEL -->\n<div id=\"main\" role=\"main\">\n\n    <!-- RIBBON -->\n    <div id=\"ribbon\">\n\n        <!-- breadcrumb -->\n        <state-breadcrumbs></state-breadcrumbs>\n        <!-- end breadcrumb -->\n\n\n    </div>\n    <!-- END RIBBON -->\n\n\n    <div data-smart-router-animation-wrap=\"content content@app\" data-wrap-for=\"#content\">\n        <div data-ui-view=\"content\" data-autoscroll=\"false\"></div>\n    </div>\n\n</div>\n<!-- END MAIN PANEL -->\n\n<!-- PAGE FOOTER -->\n<div data-smart-include=\"app/layout/partials/footer.tpl.html\"></div>\n\n<div data-smart-include=\"app/layout/shortcut/shortcut.tpl.html\"></div>\n\n<!-- END PAGE FOOTER -->\n\n\n");
+$templateCache.put("app/layout/layout.tpl.html","<!-- HEADER -->\n<div data-smart-include=\"app/layout/partials/header.tpl.html\" class=\"placeholder-header\"></div>\n<!-- END HEADER -->\n\n<!-- Left panel : Navigation area -->\n<!-- Note: This width of the aside area can be adjusted through LESS variables -->\n<div data-smart-include=\"app/layout/partials/navigation.tpl.html\" class=\"placeholder-left-panel\"></div>\n<!-- END NAVIGATION -->\n\n<!-- MAIN PANEL -->\n<div id=\"main\" role=\"main\">\n\n    <!-- RIBBON -->\n    <div id=\"ribbon\">\n\n        <!-- breadcrumb -->\n        <state-breadcrumbs></state-breadcrumbs>\n        <!-- end breadcrumb -->\n\n\n    </div>\n    <!-- END RIBBON -->\n\n    <div data-smart-router-animation-wrap=\"content content@app\" data-wrap-for=\"#content\">\n        <div data-ui-view=\"content\" data-autoscroll=\"false\"></div>\n    </div>\n\n\n</div>\n<!-- END MAIN PANEL -->\n\n<!-- PAGE FOOTER -->\n<div data-smart-include=\"app/layout/partials/footer.tpl.html\"></div>\n\n<div data-smart-include=\"app/layout/shortcut/shortcut.tpl.html\"></div>\n\n<!-- END PAGE FOOTER -->\n\n\n");
+$templateCache.put("app/auth/directives/login-info.tpl.html","<div class=\"login-info ng-cloak\">\n    <span> <!-- User image size is adjusted inside CSS, it should stay as it -->\n        <a  href=\"\" toggle-shortcut>\n            <img ng-src=\"{{user.picture}}\" alt=\"me\" class=\"online\">\n                <span>{{user.username}}\n                </span>\n            <i class=\"fa fa-angle-down\"></i>\n        </a>\n     </span>\n</div>");
 $templateCache.put("app/calendar/directives/full-calendar.tpl.html","<div jarvis-widget data-widget-color=\"blueDark\">\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-calendar\"></i> </span>\n\n        <h2> My Events </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n            <div class=\"btn-group dropdown\" dropdown >\n                <button class=\"btn dropdown-toggle btn-xs btn-default\" data-toggle=\"dropdown\">\n                    Showing <i class=\"fa fa-caret-down\"></i>\n                </button>\n                <ul class=\"dropdown-menu js-status-update pull-right\">\n                    <li>\n                        <a ng-click=\"changeView(\'month\')\">Month</a>\n                    </li>\n                    <li>\n                        <a ng-click=\"changeView(\'agendaWeek\')\">Agenda</a>\n                    </li>\n                    <li>\n                        <a ng-click=\"changeView(\'agendaDay\')\">Today</a>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </header>\n\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body no-padding\">\n            <!-- content goes here -->\n            <div class=\"widget-body-toolbar\">\n\n                <div id=\"calendar-buttons\">\n\n                    <div class=\"btn-group\">\n                        <a ng-click=\"prev()\" class=\"btn btn-default btn-xs\"><i\n                                class=\"fa fa-chevron-left\"></i></a>\n                        <a ng-click=\"next()\" class=\"btn btn-default btn-xs\"><i\n                                class=\"fa fa-chevron-right\"></i></a>\n                    </div>\n                </div>\n            </div>\n            <div id=\"calendar\"></div>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>\n");
 $templateCache.put("app/calendar/views/calendar.tpl.html","<!-- MAIN CONTENT -->\n<div id=\"content\">\n\n    <div class=\"row\">\n        <big-breadcrumbs items=\"[\'Home\', \'Calendar\']\" class=\"col-xs-12 col-sm-7 col-md-7 col-lg-4\"></big-breadcrumbs>\n        <div smart-include=\"app/layout/partials/sub-header.tpl.html\"></div>\n    </div>\n    <!-- widget grid -->\n    <section id=\"widget-grid\" widget-grid>\n        <!-- row -->\n        <div class=\"row\" ng-controller=\"CalendarCtrl\" >\n\n\n            <div class=\"col-sm-12 col-md-12 col-lg-3\">\n                <!-- new widget -->\n                <div class=\"jarviswidget jarviswidget-color-blueDark\">\n                    <header>\n                        <h2> Add Events </h2>\n                    </header>\n\n                    <!-- widget div-->\n                    <div>\n\n                        <div class=\"widget-body\">\n                            <!-- content goes here -->\n\n                            <form id=\"add-event-form\">\n                                <fieldset>\n\n                                    <div class=\"form-group\">\n                                        <label>Select Event Icon</label>\n                                        <div class=\"btn-group btn-group-sm btn-group-justified\" data-toggle=\"buttons\" > <!--  -->\n                                            <label class=\"btn btn-default active\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-1\" value=\"fa-info\" radio-toggle ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-info text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-2\" value=\"fa-warning\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-warning text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-3\" value=\"fa-check\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-check text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-4\" value=\"fa-user\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-user text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-5\" value=\"fa-lock\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-lock text-muted\"></i> </label>\n                                            <label class=\"btn btn-default\">\n                                                <input type=\"radio\" name=\"iconselect\" id=\"icon-6\" value=\"fa-clock-o\" radio-toggle  ng-model=\"newEvent.icon\">\n                                                <i class=\"fa fa-clock-o text-muted\"></i> </label>\n                                        </div>\n                                    </div>\n\n                                    <div class=\"form-group\">\n                                        <label>Event Title</label>\n                                        <input ng-model=\"newEvent.title\" class=\"form-control\"  id=\"title\" name=\"title\" maxlength=\"40\" type=\"text\" placeholder=\"Event Title\">\n                                    </div>\n                                    <div class=\"form-group\">\n                                        <label>Event Description</label>\n                                        <textarea  ng-model=\"newEvent.description\" class=\"form-control\" placeholder=\"Please be brief\" rows=\"3\" maxlength=\"40\" id=\"description\"></textarea>\n                                        <p class=\"note\">Maxlength is set to 40 characters</p>\n                                    </div>\n\n                                    <div class=\"form-group\">\n                                        <label>Select Event Color</label>\n                                        <div class=\"btn-group btn-group-justified btn-select-tick\" data-toggle=\"buttons\" >\n                                            <label class=\"btn bg-color-darken active\">\n                                                <input   ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option1\" value=\"bg-color-darken txt-color-white\" >\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-blue\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option2\" value=\"bg-color-blue txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-orange\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option3\" value=\"bg-color-orange txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-greenLight\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option4\" value=\"bg-color-greenLight txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-blueLight\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option5\" value=\"bg-color-blueLight txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                            <label class=\"btn bg-color-red\">\n                                                <input  ng-model=\"newEvent.className\" radio-toggle   type=\"radio\" name=\"priority\" id=\"option6\" value=\"bg-color-red txt-color-white\">\n                                                <i class=\"fa fa-check txt-color-white\"></i> </label>\n                                        </div>\n                                    </div>\n\n                                </fieldset>\n                                <div class=\"form-actions\">\n                                    <div class=\"row\">\n                                        <div class=\"col-md-12\">\n                                            <button class=\"btn btn-default\" type=\"button\" id=\"add-event\" ng-click=\"addEvent()\" >\n                                                Add Event\n                                            </button>\n                                        </div>\n                                    </div>\n                                </div>\n                            </form>\n\n                            <!-- end content -->\n                        </div>\n\n                    </div>\n                    <!-- end widget div -->\n                </div>\n                <!-- end widget -->\n\n                <div class=\"well well-sm\" id=\"event-container\">\n                    <form>\n                        <legend>\n                            Draggable Events\n                        </legend>\n                        <ul id=\'external-events\' class=\"list-unstyled\">\n\n                            <li ng-repeat=\"event in eventsExternal\" dragable-event>\n                                <span class=\"{{event.className}}\" \n                                    data-description=\"{{event.description}}\"\n                                    data-icon=\"{{event.icon}}\"\n                                >\n                                {{event.title}}</span>\n                            </li>\n                            \n                        </ul>\n\n                        <!-- <ul id=\'external-events\' class=\"list-unstyled\">\n                            <li>\n                                <span class=\"bg-color-darken txt-color-white\" data-description=\"Currently busy\" data-icon=\"fa-time\">Office Meeting</span>\n                            </li>\n                            <li>\n                                <span class=\"bg-color-blue txt-color-white\" data-description=\"No Description\" data-icon=\"fa-pie\">Lunch Break</span>\n                            </li>\n                            <li>\n                                <span class=\"bg-color-red txt-color-white\" data-description=\"Urgent Tasks\" data-icon=\"fa-alert\">URGENT</span>\n                            </li>\n                        </ul> -->\n\n                        <div class=\"checkbox\">\n                            <label>\n                                <input type=\"checkbox\" id=\"drop-remove\" class=\"checkbox style-0\" checked=\"checked\">\n                                <span>remove after drop</span> </label>\n\n                        </div>\n                    </form>\n\n                </div>\n            </div>\n\n\n            <article class=\"col-sm-12 col-md-12 col-lg-9\">\n                <full-calendar id=\"main-calendar-widget\" data-events=\"events\"></full-calendar>\n            </article>\n        </div>\n    </section>\n</div>");
-$templateCache.put("app/auth/directives/login-info.tpl.html","<div class=\"login-info ng-cloak\">\n    <span> <!-- User image size is adjusted inside CSS, it should stay as it -->\n        <a  href=\"\" toggle-shortcut>\n            <img ng-src=\"{{user.picture}}\" alt=\"me\" class=\"online\">\n                <span>{{user.username}}\n                </span>\n            <i class=\"fa fa-angle-down\"></i>\n        </a>\n     </span>\n</div>");
 $templateCache.put("app/dashboard/projects/recent-projects.tpl.html","<div class=\"project-context hidden-xs dropdown\" dropdown>\n\n    <span class=\"label\">{{getWord(\'Projects\')}}:</span>\n    <span class=\"project-selector dropdown-toggle\" data-toggle=\"dropdown\">{{getWord(\'Recent projects\')}} <i ng-if=\"projects.length\"\n            class=\"fa fa-angle-down\"></i></span>\n\n    <ul class=\"dropdown-menu\" ng-if=\"projects.length\">\n        <li ng-repeat=\"project in projects\">\n            <a href=\"{{project.href}}\">{{project.title}}</a>\n        </li>\n        <li class=\"divider\"></li>\n        <li>\n            <a ng-click=\"clearProjects()\"><i class=\"fa fa-power-off\"></i> Clear</a>\n        </li>\n    </ul>\n\n</div>");
 $templateCache.put("app/dashboard/todo/todo-widget.tpl.html","<div id=\"todo-widget\" jarvis-widget data-widget-editbutton=\"false\" data-widget-color=\"blue\"\n     ng-controller=\"TodoCtrl\">\n    <header>\n        <span class=\"widget-icon\"> <i class=\"fa fa-check txt-color-white\"></i> </span>\n\n        <h2> ToDo\'s </h2>\n\n        <div class=\"widget-toolbar\">\n            <!-- add: non-hidden - to disable auto hide -->\n            <button class=\"btn btn-xs btn-default\" ng-class=\"{active: newTodo}\" ng-click=\"toggleAdd()\"><i ng-class=\"{ \'fa fa-plus\': !newTodo, \'fa fa-times\': newTodo}\"></i> Add</button>\n\n        </div>\n    </header>\n    <!-- widget div-->\n    <div>\n        <div class=\"widget-body no-padding smart-form\">\n            <!-- content goes here -->\n            <div ng-show=\"newTodo\">\n                <h5 class=\"todo-group-title\"><i class=\"fa fa-plus-circle\"></i> New Todo</h5>\n\n                <form name=\"newTodoForm\" class=\"smart-form\">\n                    <fieldset>\n                        <section>\n                            <label class=\"input\">\n                                <input type=\"text\" required class=\"input-lg\" ng-model=\"newTodo.title\"\n                                       placeholder=\"What needs to be done?\">\n                            </label>\n                        </section>\n                        <section>\n                            <div class=\"col-xs-6\">\n                                <label class=\"select\">\n                                    <select class=\"input-sm\" ng-model=\"newTodo.state\"\n                                            ng-options=\"state as state for state in states\"></select> <i></i> </label>\n                            </div>\n                        </section>\n                    </fieldset>\n                    <footer>\n                        <button ng-disabled=\"newTodoForm.$invalid\" type=\"button\" class=\"btn btn-primary\"\n                                ng-click=\"createTodo()\">\n                            Add\n                        </button>\n                        <button type=\"button\" class=\"btn btn-default\" ng-click=\"toggleAdd()\">\n                            Cancel\n                        </button>\n                    </footer>\n                </form>\n            </div>\n\n            <todo-list state=\"Critical\"  title=\"Critical Tasks\" icon=\"warning\" todos=\"todos\"></todo-list>\n\n            <todo-list state=\"Important\" title=\"Important Tasks\" icon=\"exclamation\" todos=\"todos\"></todo-list>\n\n            <todo-list state=\"Completed\" title=\"Completed Tasks\" icon=\"check\" todos=\"todos\"></todo-list>\n\n            <!-- end content -->\n        </div>\n\n    </div>\n    <!-- end widget div -->\n</div>");
 $templateCache.put("app/layout/language/language-selector.tpl.html","<ul class=\"header-dropdown-list hidden-xs ng-cloak\" ng-controller=\"LanguagesCtrl\">\n    <li class=\"dropdown\" dropdown>\n        <a class=\"dropdown-toggle\"  data-toggle=\"dropdown\" href> <img src=\"styles/img/blank.gif\" class=\"flag flag-{{currentLanguage.key}}\" alt=\"{{currentLanguage.alt}}\"> <span> {{currentLanguage.title}} </span>\n            <i class=\"fa fa-angle-down\"></i> </a>\n        <ul class=\"dropdown-menu pull-right\">\n            <li ng-class=\"{active: language==currentLanguage}\" ng-repeat=\"language in languages\">\n                <a ng-click=\"selectLanguage(language)\" ><img src=\"styles/img/blank.gif\" class=\"flag flag-{{language.key}}\"\n                                                   alt=\"{{language.alt}}\"> {{language.title}}</a>\n            </li>\n        </ul>\n    </li>\n</ul>");
@@ -2407,6 +2407,65 @@ angular.module('app.appViews').controller('ProjectsDemoCtrl', function ($scope, 
         "order": [[1, 'asc']]
     }
 });
+"use strict";
+
+angular.module('app.auth').directive('loginInfo', function(User){
+
+    return {
+        restrict: 'A',
+        templateUrl: 'app/auth/directives/login-info.tpl.html',
+        link: function(scope, element){
+            User.initialized.then(function(){
+                scope.user = User
+            });
+        }
+    }
+})
+
+"use strict";
+
+angular.module('app.auth').controller('LoginCtrl', function ($scope, $state, GooglePlus, User, ezfb) {
+
+    $scope.$on('event:google-plus-signin-success', function (event, authResult) {
+        if (authResult.status.method == 'PROMPT') {
+            GooglePlus.getUser().then(function (user) {
+                User.username = user.name;
+                User.picture = user.picture;
+                $state.go('app.dashboard');
+            });
+        }
+    });
+
+    $scope.$on('event:facebook-signin-success', function (event, authResult) {
+        ezfb.api('/me', function (res) {
+            User.username = res.name;
+            User.picture = 'https://graph.facebook.com/' + res.id + '/picture';
+            $state.go('app.dashboard');
+        });
+    });
+})
+
+
+
+'use strict';
+
+angular.module('app.auth').factory('User', function ($http, $q, APP_CONFIG) {
+    var dfd = $q.defer();
+
+    var UserModel = {
+        initialized: dfd.promise,
+        username: undefined,
+        picture: undefined
+    };
+     $http.get(APP_CONFIG.apiRootUrl + '/user.json').then(function(response){
+         UserModel.username = response.data.username;
+         UserModel.picture= response.data.picture;
+         dfd.resolve(UserModel)
+     });
+
+    return UserModel;
+});
+
 'use strict';
 
 angular.module('app.calendar').controller('CalendarCtrl', function ($scope, $log, CalendarEvent) {
@@ -2636,65 +2695,6 @@ angular.module('app.calendar').directive('fullCalendar', function (CalendarEvent
 angular.module('app.calendar').factory('CalendarEvent', function($resource, APP_CONFIG){
     return $resource( APP_CONFIG.apiRootUrl + '/events.json', {_id:'@id'})
 });
-"use strict";
-
-angular.module('app.auth').directive('loginInfo', function(User){
-
-    return {
-        restrict: 'A',
-        templateUrl: 'app/auth/directives/login-info.tpl.html',
-        link: function(scope, element){
-            User.initialized.then(function(){
-                scope.user = User
-            });
-        }
-    }
-})
-
-"use strict";
-
-angular.module('app.auth').controller('LoginCtrl', function ($scope, $state, GooglePlus, User, ezfb) {
-
-    $scope.$on('event:google-plus-signin-success', function (event, authResult) {
-        if (authResult.status.method == 'PROMPT') {
-            GooglePlus.getUser().then(function (user) {
-                User.username = user.name;
-                User.picture = user.picture;
-                $state.go('app.dashboard');
-            });
-        }
-    });
-
-    $scope.$on('event:facebook-signin-success', function (event, authResult) {
-        ezfb.api('/me', function (res) {
-            User.username = res.name;
-            User.picture = 'https://graph.facebook.com/' + res.id + '/picture';
-            $state.go('app.dashboard');
-        });
-    });
-})
-
-
-
-'use strict';
-
-angular.module('app.auth').factory('User', function ($http, $q, APP_CONFIG) {
-    var dfd = $q.defer();
-
-    var UserModel = {
-        initialized: dfd.promise,
-        username: undefined,
-        picture: undefined
-    };
-     $http.get(APP_CONFIG.apiRootUrl + '/user.json').then(function(response){
-         UserModel.username = response.data.username;
-         UserModel.picture= response.data.picture;
-         dfd.resolve(UserModel)
-     });
-
-    return UserModel;
-});
-
 "use strict";	
 
 angular.module('app').controller("ActivitiesCtrl", function ActivitiesCtrl($scope, $log, activityService){
@@ -3876,70 +3876,70 @@ angular.module('app.maps').factory('SmartMapStyle', function ($q, $http, APP_CON
 'use strict';
 
 /**
-* @author: Maria Andrea Cruz Blandon
-* Controller for preview view. If there is not query in the request that load this view then the user is redirect to home
-* (case when you try to access the view directly without following the process). Uses RestFulAPI provider to request the 
-* tweets, once there is a response if this one is success then load the tweets list other wise specify the type of error.
-* This will redirects the user to home in case of error or in case the user wants to change the query. And it will also 
-* redirect to results view if the user clicks on analysis button.
-*/
+ * @author: Maria Andrea Cruz Blandon
+ * Controller for preview view. If there is not query in the request that load this view then the user is redirect to home
+ * (case when you try to access the view directly without following the process). Uses RestFulAPI provider to request the
+ * tweets, once there is a response if this one is success then load the tweets list other wise specify the type of error.
+ * This will redirects the user to home in case of error or in case the user wants to change the query. And it will also
+ * redirect to results view if the user clicks on analysis button.
+ */
 angular.module('app.sentimentAnalysis').controller('PreviewController', function ($scope, $stateParams, RestFulAPI, $state) {
-	// Attributes of the controller variables used to manage the visibility of components or the values to be load in the view
+    // Attributes of the controller variables used to manage the visibility of components or the values to be load in the view
 
-	$scope.query = $stateParams.query;
-	$scope.twees = false;
-	$scope.total_tweets = null;
-	$scope.tweet_list = null;
-	$scope.error_message = null;
-	$scope.type_class = null;
-	$scope.response = false;
+    $scope.query = $stateParams.query;
+    $scope.twees = false;
+    $scope.total_tweets = null;
+    $scope.preview_tweets = 10;
+    $scope.tweet_list = null;
+    $scope.error_message = null;
+    $scope.type_class = null;
+    $scope.response = false;
 
-	// Redirect if there is no query value
-	if($scope.query == null){
-		$state.go('app.home');
-	}else{
-		// There is a query value
-		var tweet_query = {type: null, content: $scope.query};
-		// Identify the type of query 
-		if($scope.query[0] ==  '@'){
-			tweet_query.type = "nickname";
-			$scope.type_class = "nickname";
-		}else{
-			tweet_query.type = "hashtag";
-			$scope.type_class = "hashtag";
-		}
+    // Redirect if there is no query value
+    if ($scope.query == null) {
+        $state.go('app.home');
+    } else {
+        // There is a query value
+        const tweet_query = {type: null, content: $scope.query};
+        // Identify the type of query
+        if ($scope.query[0] === '@') {
+            tweet_query.type = "nickname";
+            $scope.type_class = "nickname";
+        } else {
+            tweet_query.type = "hashtag";
+            $scope.type_class = "hashtag";
+        }
 
-		RestFulAPI.get_tweets(tweet_query).then(function(tweet_list){
-			$scope.tweet_list = tweet_list.tweets;
-			$scope.tweets = true;
-			$scope.total_tweets = tweet_list.tweets.length;
-			$scope.response = true;
+        RestFulAPI.get_tweets(tweet_query).then(function (tweet_list) {
+            $scope.tweet_list = tweet_list.tweets;
+            $scope.tweets = true;
+            $scope.total_tweets = tweet_list.tweets.length;
+            $scope.response = true;
 
-		}, function(err){
-			$scope.twees = false;
-			$scope.total_tweets = null;
-			$scope.tweet_list = null;
-			$scope.response = true;
+        }, function (err) {
+            $scope.twees = false;
+            $scope.total_tweets = null;
+            $scope.tweet_list = null;
+            $scope.response = true;
 
-			if(err.type == 0){
-				$scope.error_message = "Tweets not found :(";
-			}else{
-				$scope.error_message = "Something went wrong :(";
-			}
-		});
-	}
+            if (err.type === 0) {
+                $scope.error_message = "Tweets not found :(";
+            } else {
+                $scope.error_message = "Something went wrong :(";
+            }
+        });
+    }
 
-	// Redirect to home
-	$scope.change_search = function(){
-		$state.go('app.home')
-	}
+    // Redirect to home
+    $scope.change_search = function () {
+        $state.go('app.home');
+    };
 
-	// Redirect to results
-	$scope.analyse = function(){
-		$state.go('app.results', {tweets: $scope.tweet_list, query: $scope.query});
-	}
+    // Redirect to results
+    $scope.analyse = function () {
+        $state.go('app.results', {tweets: $scope.tweet_list, query: $scope.query});
+    };
 
-	
 
 });
 'use strict';
@@ -3978,10 +3978,16 @@ angular.module('app.sentimentAnalysis').controller('ResultsController', function
 
 		RestFulAPI.get_analysis(sentiment_query).then(function(sentiment_data){
 			$scope.analysis = true;
-			$scope.results = sentiment_data;
+
+			// Sentiment statistics
+			$scope.results = sentiment_data[0];
 			$scope.results.score.positive_percentage =  $scope.results.score.positive_percentage * 100;
 			$scope.results.score.negative_percentage =  $scope.results.score.negative_percentage * 100;
 			$scope.results.score.neutral_percentage =  $scope.results.score.neutral_percentage * 100;
+
+			// Most negative, most positive
+			$scope.min_max = sentiment_data[1];
+
 			$scope.response = true;
 
 		}, function(err){
@@ -3998,169 +4004,114 @@ angular.module('app.sentimentAnalysis').controller('ResultsController', function
 });
 'use strict';
 
+angular.module('app.sentimentAnalysis').filter("epoch", function() {
+    const format = {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+    };
+
+    return function(item) {
+        return new Date(item * 1000).toLocaleString("en-US", format);
+    };
+});
+'use strict';
+
 /**
-* @author: Maria Andrea Cruz Blandon
-* Provider which manage the requests sent to the Django RestFulAPI.
-* methods available:
-* get_tweets: Retrieve tweets of a query
-* get_analysis: Retrieve the sentiment analysis of a list of tweets
-* Both methods return a promise. This one can be successful in which case the tweets or the analysis is sent as result. Or it can 
-* be rejection in which case a code for the type of error will be sent, particularly because in the case of tweets, one error is
-* 'tweets no found' but the request response will be successful then it is necessary to identify this case.
-*/
+ * @author: Maria Andrea Cruz Blandon
+ * Provider which manage the requests sent to the Django RestFulAPI.
+ * methods available:
+ * get_tweets: Retrieve tweets of a query
+ * get_analysis: Retrieve the sentiment analysis of a list of tweets
+ * Both methods return a promise. This one can be successful in which case the tweets or the analysis is sent as result. Or it can
+ * be rejection in which case a code for the type of error will be sent, particularly because in the case of tweets, one error is
+ * 'tweets no found' but the request response will be successful then it is necessary to identify this case.
+ */
 angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
-	/**
-	* This provider will send the request to the Django RestFulAPI, and process the responses as well.
-	*/
-	// dev
-	let server= 'http://127.0.0.1:8000/';
+    /**
+     * This provider will send the request to the Django RestFulAPI, and process the responses as well.
+     */
+    // dev
+    const server = 'http://127.0.0.1:8000/';
 
-	// Start of data >>>>>>>>>>>>>>>>>>
-	// Dummi data. For development
+    this.$get = function ($q, $http, $rootScope) {
+        /**
+         * Request to retrieve the sentiment analysis of a set of tweets.
+         * sentiment_query = {tweets: [{author: "nickname", data_time:"time", content:"tweet"} , <tweet> ..]}
+         * sentiment_data = {number_found: int, skipped: int, score: {positive_number: <int>,
+		 * positive_percentage: <float>, negative_number: <int>, negative_percentage: <float>,
+		 * neutral_number: <int>, neutral_percentage: <float>}}
+         * @param sentiment_query
+         * return a promise with the response of the request. This can be a sentiment_data if the response is success, or
+         * an error either in the client side or server side.
+         */
+        const get_analysis = function (sentiment_query) {
+            const url = server + 'tweet_sentiment/sentiment';
+            const dfd = $q.defer();
+            $http.post(url, sentiment_query).success(function (sentiment_data) {
+                // Broadcast result of request
+                $rootScope.$broadcast('$finishedRequest');
+                dfd.resolve(sentiment_data);
+            }).error(function (err) {
+                const error = {type: 1, message: JSON.stringify(err), data: err};
+                console.error(JSON.stringify(err));
+                // Broadcast result of request
+                $rootScope.$broadcast('$finishedRequest');
+                dfd.reject(error);
+            });
+            return dfd.promise;
+        };
 
-	var sentiment_query_dev = {
-        "tweets": [
-            {
-                "author": "gossminn",
-                "date_time": '1522351047.353921',
-                "content": "Hello world! I love organic cookies!"
+        /**
+         * Request the tweets based on a tweet_query.
+         * tweet_query = {type: "hashtag"|"nickname", content:"<query>"}
+         * @param tweet_query
+         * return a promise with the response of the request. This can be a list of the tweets retrieve,
+         * an empty list if there were no tweets, or an error either in the client side or server side.
+         */
+        const get_tweets = function (tweet_query) {
+            /**
+             * Type of errors:
+             * type 0 when there were no tweets found
+             * type 1 when the response has an error status code
+             */
+            const url = server + 'tweet_sentiment/tweets';
+            const dfd = $q.defer();
+            $http.post(url, tweet_query).success(function (tweet_list) {
+                if (tweet_list.tweets.length === 0 && tweet_list.number_found === 0) {
+                    // Broadcast result of request
+                    $rootScope.$broadcast('$finishedRequest');
+                    dfd.reject({type: 0});
+                } else {
+                    // Broadcast result of request
+                    $rootScope.$broadcast('$finishedRequest');
+                    dfd.resolve(tweet_list);
+                }
+            }).error(function (err) {
+                // Broadcast result of request
+                const error = {type: 1, message: JSON.stringify(err), data: err};
+                // Broadcast result of request
+                $rootScope.$broadcast('$finishedRequest');
+                dfd.reject(error);
+            });
+            return dfd.promise;
+        };
+
+        return {
+
+            get_tweets: function (tweet_query) {
+                return get_tweets(tweet_query);
             },
-            {
-                "author": "gossminn",
-                "date_time": '1522351047.353921',
-                "content": "I hate studying!"
+            get_analysis: function (sentiment_query) {
+                return get_analysis(sentiment_query);
             }
-        ]
+        };
     };
-
-    var tweet_query_dev = {
-    	"type": "hashtag",
-    	"content": "#Dancing"
-    };
-
-    var tweet_list = {
-    	"number_found": 3,
-    	"tweets": [
-    		{
-                "author": "gossminn",
-                "date_time": '1522351047.353921',
-                "content": "Hello world! I love organic cookies!"
-            },
-            {
-                "author": "gossminn",
-                "date_time": '1522351047.353921',
-                "content": "I hate studying!"
-            },
-            {
-                "author": "user_1",
-                "date_time": '1522351047.353921',
-                "content": "My first tweet :)!"
-            }
-    	]
-    };
-
-    var sentiment_data = {
-    	"number_found":2,
-    	"skipped":0,
-    	"score":{
-    		"positive_number":1,
-    		"positive_percentage":0.5,
-    		"negative_number":0,
-    		"negative_percentage":0.0,
-    		"neutral_number":1,
-    		"neutral_percentage":0.5
-    	}
-    };
-
-    // End of data >>>>>>>>>>>>>>>>>>>>
-
-
-	this.$get = function($q, $http, $rootScope){
-		/**
-		* Request to retrieve the sentiment analysis of a set of tweets.
-		* sentiment_query = {tweets: [{author: "nickname", data_time:"time", content:"tweet"} , <tweet> ..]}
-		* sentiment_data = {number_found: int, skipped: int, score: {positive_number: <int>, 
-		* positive_percentage: <float>, negative_number: <int>, negative_percentage: <float>, 
-		* neutral_number: <int>, neutral_percentage: <float>}}
-		* @param sentiment_query
-		* return a promise with the response of the request. This can be a sentiment_data if the response is success, or
-		* an error either in the client side or server side.
-		*/
-		var get_analysis = function(sentiment_query){
-			var url = server + 'tweet_sentiment/sentiment';
-	    	var dfd = $q.defer();
-	    	$http.post(url, sentiment_query).success(function(sentiment_data){
-	    		// Broadcast result of request
-                $rootScope.$broadcast('$finishedRequest'); 
-				dfd.resolve(sentiment_data);
-			}).error(function(err){
-				var error = {type: 1, message: JSON.stringify(err), data: err};
-				console.error(JSON.stringify(err));
-				// Broadcast result of request
-                $rootScope.$broadcast('$finishedRequest'); 
-				dfd.reject(error);
-			});
-			return dfd.promise;
-	    };
-
-	    /**
-	    * Request the tweets based on a tweet_query.
-	    * tweet_query = {type: "hashtag"|"nickname", content:"<query>"}
-	    * @param tweet_query
-	    * return a promise with the response of the request. This can be a list of the tweets retrieve,
-	    * an empty list if there were no tweets, or an error either in the client side or server side.
-	    */
-	    var get_tweets = function(tweet_query){
-	    	/**
-	    	* Type of errors:
-	    	* type 0 when there were no tweets found
-	    	* type 1 when the response has an error status code
-	    	*/
-
-	    	var url = 'tweet_sentiment/tweets';
-	    	var dfd = $q.defer();
-	    	$http.post(url, tweet_query).success(function(tweet_list){
-	    		if(tweet_list.tweets.length == 0 && tweet_list.number_found == 0){
-	    			var error = {type: 0, message: "Tweets no found", data: tweet_list};
-	    			// Broadcast result of request
-                	$rootScope.$broadcast('$finishedRequest'); 
-	    			dfd.reject(error);
-	    		}else{
-	    			// Broadcast result of request
-                	$rootScope.$broadcast('$finishedRequest'); 
-	    			dfd.resolve(tweet_list);
-	    		}
-	    	}).error(function(err){
-	    			//Development purpose:
-	    			// Broadcast result of request
-                	$rootScope.$broadcast('$finishedRequest'); 
-	    			dfd.resolve(tweet_list);
-	    			/*var error = {type: 1, message: JSON.stringify(err), data: err};
-	    			// Broadcast result of request
-                	$rootScope.$broadcast('$finishedRequest');
-	    			dfd.reject(error);*/
-	    	});
-	    	return dfd.promise;
-	    }
-
-		return {
-			
-			get_tweets: function(tweet_query){
-				if(tweet_query == null){
-					// Test purpose
-					tweet_query = tweet_query_dev;
-				}
-				return get_tweets(tweet_query);
-			},
-			get_analysis: function (sentiment_query) {
-				if(sentiment_query == null){
-					// Test purpose
-					sentiment_query = sentiment_query_dev;
-				}
-				return get_analysis(sentiment_query);
-			}
-		}
-	}
 
 });
 /**
@@ -5633,7 +5584,6 @@ angular.module('SmartAdmin.Layout').directive('smartLayout', function ($rootScop
                 var contentXPad = $content.outerWidth(true) - $content.width();
                 var contentYPad = $content.outerHeight(true) - $content.height();
 
-
                 calcWidth = $window.width() - menuWidth - contentXPad;
                 calcHeight = $window.height() - menuHeight - contentYPad - $navigation.height() - $ribbon.height() - $footer.height();
 
@@ -5763,7 +5713,7 @@ angular.module('SmartAdmin.Layout').directive('smartRouterAnimationWrap', functi
             element.addClass('router-animation-container');
 
 
-            var $loader = $('<div class="router-animation-loader"><i class="fa fa-gear fa-4x fa-spin"></i></div>')
+            var $loader = $('<div class="router-animation-loader"><i class="fa fa-gear fa-3x fa-spin"></i></div>')
                 .css({
                     position: 'absolute',
                     top: 50,
@@ -5778,7 +5728,7 @@ angular.module('SmartAdmin.Layout').directive('smartRouterAnimationWrap', functi
             function contentViewAnimStart() {
                 needRunContentViewAnimEnd = true;
                 element.css({
-                    height: element.height() + 'px',
+                    height: 'auto',
                     overflow: 'hidden'
                 }).addClass('active');
                 $loader.fadeIn();
@@ -6426,43 +6376,6 @@ angular.module('SmartAdmin.Layout').directive('stateBreadcrumbs', function ($roo
         }
     }
 });
-
-"use strict";
-
-angular.module('SmartAdmin.UI').directive('smartPopoverHtml', function () {
-    return {
-        restrict: "A",
-        link: function(scope, element, attributes){
-            var options = {};
-            options.content = attributes.smartPopoverHtml;
-            options.placement = attributes.popoverPlacement || 'top';
-            options.html = true;
-            options.trigger =  attributes.popoverTrigger || 'click';
-            options.title =  attributes.popoverTitle || attributes.title;
-            element.popover(options)
-
-        }
-
-    };
-});
-
-
-"use strict";
-
-angular.module('SmartAdmin.UI').directive('smartTooltipHtml', function () {
-        return {
-            restrict: 'A',
-            link: function(scope, element, attributes){
-                element.tooltip({
-                    placement: attributes.tooltipPlacement || 'top',
-                    html: true,
-                    title: attributes.smartTooltipHtml
-                })
-            }
-        };
-    }
-);
-
 'use strict';
 
 angular.module('SmartAdmin.Layout').factory('SmartCss', function ($rootScope, $timeout) {
@@ -6608,6 +6521,43 @@ angular.module('SmartAdmin.Layout').factory('lazyScript', function($q, $http){
         }
     };
 });
+
+"use strict";
+
+angular.module('SmartAdmin.UI').directive('smartPopoverHtml', function () {
+    return {
+        restrict: "A",
+        link: function(scope, element, attributes){
+            var options = {};
+            options.content = attributes.smartPopoverHtml;
+            options.placement = attributes.popoverPlacement || 'top';
+            options.html = true;
+            options.trigger =  attributes.popoverTrigger || 'click';
+            options.title =  attributes.popoverTitle || attributes.title;
+            element.popover(options)
+
+        }
+
+    };
+});
+
+
+"use strict";
+
+angular.module('SmartAdmin.UI').directive('smartTooltipHtml', function () {
+        return {
+            restrict: 'A',
+            link: function(scope, element, attributes){
+                element.tooltip({
+                    placement: attributes.tooltipPlacement || 'top',
+                    html: true,
+                    title: attributes.smartTooltipHtml
+                })
+            }
+        };
+    }
+);
+
 "use strict";
 
 angular.module('app.auth').directive('facebookSignin', function ($rootScope, ezfb) {
