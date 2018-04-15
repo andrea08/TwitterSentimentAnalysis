@@ -4036,8 +4036,8 @@ angular.module('app.sentimentAnalysis').provider('RestFulAPI', function () {
     /**
      * This provider will send the request to the Django RestFulAPI, and process the responses as well.
      */
-    // dev
-    const server = 'http://127.0.0.1:8000/';
+    // deploy
+    const server = 'http://django-env.gqpastpgwd.eu-west-3.elasticbeanstalk.com/';
 
     this.$get = function ($q, $http, $rootScope) {
         /**
